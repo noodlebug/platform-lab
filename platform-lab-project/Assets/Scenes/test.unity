@@ -256,7 +256,7 @@ BoxCollider2D:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 8.445985, y: 4.563374}
+    newSize: {x: 8.445985, y: 4.8393493}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
@@ -303,7 +303,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 8.445985, y: 4.563374}
+  m_Size: {x: 8.445985, y: 4.8393493}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -315,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 843135906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.102, y: -3.55, z: 0}
+  m_LocalPosition: {x: -0.102, y: -3.412, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -378,7 +378,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1000
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -436,7 +436,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918165368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.127, y: -0.822, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 553327150}
@@ -455,4 +455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belowPlayer: {fileID: 553327150}
-  jumpForce: 1000
+  acceleration: 150
+  maxSpeed: 2
+  jumpForce: 250
