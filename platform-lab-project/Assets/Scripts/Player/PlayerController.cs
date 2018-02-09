@@ -34,30 +34,21 @@ public class PlayerController : MonoBehaviour
     //  every frame
     private void Update()
     {
-        //  //  //  //  //  //  DEBUG
+        game.debug.Log("Position X:", System.Math.Round(transform.position.x, 2).ToString());//DEBUG
 
-        game.debug.Log("Position X:", System.Math.Round(transform.position.x, 2).ToString());
-
-        //  //  //  //  //  //
-
-        //  offset is half the width of the player sprite
+        //  plot a line between either side of the player, just below the player
         float offset = spriteRenderer.bounds.size.x / 2;
-
-        //  get two points, below the player object and at either edge of it's horizontal bounds
         Vector2 leftBelow = new Vector2(belowPlayer.position.x - offset, belowPlayer.position.y);
         Vector2 rightBelow = new Vector2(belowPlayer.position.x + offset, belowPlayer.position.y);
 
-        //  cast a 2D ray from left to right, below the player
-        //  https://forum.unity.com/threads/c-help-1-layermask-nametolayer-environment.224932/ 1 << LayerMask.NameToLayer("Ground")
+        //  raycast to check if player is grounded
         grounded = Physics2D.Linecast(leftBelow, rightBelow, 1 << LayerMask.NameToLayer("Ground"));
+        game.debug.Log("Grounded: ", grounded.ToString());//DEBUG
 
-        //  Input.GetKeyDown must be checked in Update() (every frame)
-        //  because it will only be true for the frame where the key is pressed
+        //  on ground and jump pressed
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             jump = true;
-            //  jump is now true until the next FixedUpdate() runs
-            //  at which point Jump() runs and jump is set to false
         }
 
         //  flip sprite when direction keys are pressed
@@ -80,6 +71,7 @@ public class PlayerController : MonoBehaviour
         //  jump
         if (grounded && jump)
         {
+            Debug.Log("jumping " + rigidBody.ToString());
             rigidBody.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
@@ -90,20 +82,16 @@ public class PlayerController : MonoBehaviour
 
     private void Move(bool grounded = true)
     {
-        //  GetAxis() has A assigned to negative and D assigned to positive
-        //  and works well with controller joysticks
         float hAxis = Input.GetAxis("Horizontal");
-        
-        //  returns 0 if nothing pressed
         if (hAxis == 0)
         {
-            return;
+            return;            
         }
 
         //  if not exceeding max speed, accelerate
         if (hAxis * rigidBody.velocity.x < maxSpeed)
         {
-            //  less acceleration if airbourne
+            //  airbourne acceleration
             if (!grounded)
             {
                 rigidBody.AddForce(Vector2.right * hAxis * airbourneAcceleration);
@@ -114,7 +102,7 @@ public class PlayerController : MonoBehaviour
                 rigidBody.AddForce(Vector2.right * hAxis * acceleration);
             }
 
-            //  if accelerated past max speed, clamp speed
+            //  clamp speed
             if (Mathf.Abs(rigidBody.velocity.x) > maxSpeed)
             {
                 rigidBody.velocity = new Vector2(Mathf.Sign(rigidBody.velocity.x) * maxSpeed, rigidBody.velocity.y);
