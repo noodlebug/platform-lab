@@ -11,25 +11,35 @@ public class PlayerController : MonoBehaviour
     private bool move;
     private bool jump = false;
     private bool grounded = false;
+    private Vector2 normalScale;
 
     private SpriteRenderer spriteRenderer;
 
     //  public
+    public GameManager game;
     public Transform belowPlayer;
     public float acceleration = 300f;
     public float maxSpeed = 5f;
     public float jumpForce = 250f;
+    public float airbourneAcceleration = 150f;
 
     //  when player spawns
     private void Awake()
     {
         rigidBody= GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        normalScale = transform.localScale;
     }
     
     //  every frame
     private void Update()
     {
+        //  //  //  //  //  //  DEBUG
+
+        game.debug.Log("Position X:", System.Math.Round(transform.position.x, 2).ToString());
+
+        //  //  //  //  //  //
+
         //  offset is half the width of the player sprite
         float offset = spriteRenderer.bounds.size.x / 2;
 
@@ -37,13 +47,12 @@ public class PlayerController : MonoBehaviour
         Vector2 leftBelow = new Vector2(belowPlayer.position.x - offset, belowPlayer.position.y);
         Vector2 rightBelow = new Vector2(belowPlayer.position.x + offset, belowPlayer.position.y);
 
-        //  cast a 2D ray from the center of the player object to an object below it
-        //  Physics2D.Linecast() returns true if it hits object in "ground" layer (Layers are assigned in Unity)
+        //  cast a 2D ray from left to right, below the player
         //  https://forum.unity.com/threads/c-help-1-layermask-nametolayer-environment.224932/ 1 << LayerMask.NameToLayer("Ground")
         grounded = Physics2D.Linecast(leftBelow, rightBelow, 1 << LayerMask.NameToLayer("Ground"));
 
         //  Input.GetKeyDown must be checked in Update() (every frame)
-        //  Sbecause it will only be true for the frame where the key is pressed
+        //  because it will only be true for the frame where the key is pressed
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             jump = true;
@@ -68,14 +77,39 @@ public class PlayerController : MonoBehaviour
     //  50 times per second
     private void FixedUpdate()
     {
-        if (grounded)
+        //  jump
+        if (grounded && jump)
         {
-            //  GetAxis() has A assigned to negative and D assigned to positive
-            //  and works well with controller joysticks
-            float hAxis = Input.GetAxis("Horizontal");
+            rigidBody.AddForce(new Vector2(0f, jumpForce));
+            jump = false;
+        }
 
-            //  if not exceeding max speed, accelerate
-            if (hAxis * rigidBody.velocity.x < maxSpeed)
+        //  move
+        Move(grounded);
+    }
+
+    private void Move(bool grounded = true)
+    {
+        //  GetAxis() has A assigned to negative and D assigned to positive
+        //  and works well with controller joysticks
+        float hAxis = Input.GetAxis("Horizontal");
+        
+        //  returns 0 if nothing pressed
+        if (hAxis == 0)
+        {
+            return;
+        }
+
+        //  if not exceeding max speed, accelerate
+        if (hAxis * rigidBody.velocity.x < maxSpeed)
+        {
+            //  less acceleration if airbourne
+            if (!grounded)
+            {
+                rigidBody.AddForce(Vector2.right * hAxis * airbourneAcceleration);
+            }
+            //  normal acceleration
+            else
             {
                 rigidBody.AddForce(Vector2.right * hAxis * acceleration);
             }
@@ -85,27 +119,27 @@ public class PlayerController : MonoBehaviour
             {
                 rigidBody.velocity = new Vector2(Mathf.Sign(rigidBody.velocity.x) * maxSpeed, rigidBody.velocity.y);
             }
-
-            //  jump
-            if (jump)
-            {
-                rigidBody.AddForce(new Vector2(0f, jumpForce));
-                jump = false;
-            }
-        }
+        } 
     }
-    
-    //  flip sprite by setting it's transform x scale to 1 or -1
+
+    //turn left or right
     private void FaceRight()
     {
-        Vector2 scale = transform.localScale;
-        scale.x = 1;
-        transform.localScale = scale;
+        Turn(1);
     }
     private void FaceLeft()
     {
+        Turn(-1);
+    }
+    private void Turn(int sign)
+    {
+        //  if on ground stop moving before changing movement direction
+        if (grounded)
+        {
+            rigidBody.velocity = Vector2.zero;
+        }
         Vector2 scale = transform.localScale;
-        scale.x = -1;
+        scale.x = sign;
         transform.localScale = scale;
     }
 }
