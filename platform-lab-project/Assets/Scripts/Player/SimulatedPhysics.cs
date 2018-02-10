@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimulatedPhysics
+public class SimulatedPhysics : PlayerType
 {
-	//	constructor variables
-	private PlayerController player;
-    private Transform belowPlayer;
-    private float acceleration = 300f;
-    private float maxSpeed = 2f;
-    private float jumpForce = 350f;
-    private float airbourneAcceleration = 50f;
+	//	constructor variables    
+    private Transform belowPlayer;    
+    private float acceleration;
+    private float maxSpeed;
+    private float jumpForce;
+    private float airbourneAcceleration;
 	
 	private bool grounded = false;
     private bool jump = false;
 	
 	//	constructor
-	public SimulatedPhysics(PlayerController _player, Transform _belowPlayer, float _acceleration, float _maxSpeed, float _jumpForce, float _airbourneAcceleration)
+	public SimulatedPhysics(PlayerController _player, Transform _belowPlayer, float _acceleration, float _maxSpeed, float _jumpForce, float _airbourneAcceleration) : base(_player)
 	{
-		player = _player;
 		belowPlayer = _belowPlayer;
 
 		//	apply delta values in PlayerController
@@ -31,7 +29,7 @@ public class SimulatedPhysics
 	//  //
     #region _Update()
             //  //
-	public void _Update()
+	public override void _Update()
 	{
 		player.game.debug.Log("Position X:", System.Math.Round(player.transform.position.x, 2).ToString());//DEBUG
 
@@ -43,6 +41,7 @@ public class SimulatedPhysics
         player.transform.rotation = new Quaternion();
 	}
 
+    //  is player grounded and was jump pressed
 	private void CheckJump()
     {
         //  plot a line between either side of the player, just below the player
@@ -94,7 +93,7 @@ public class SimulatedPhysics
     #region _FixedUpdate()
             //  //
 
-	public void _FixedUpdate()
+	public override void _FixedUpdate()
     {
         Jump();
 

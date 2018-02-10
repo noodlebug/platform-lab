@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //  in game player input and control of the player entity
-public enum PlayerType {Simulated}; 
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,9 +11,12 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public Rigidbody2D rigidBody;
     [HideInInspector]public SpriteRenderer spriteRenderer;
     private List<Interactable> interactables = new List<Interactable>();
-    private SimulatedPhysics simulatedPhysics;
 
-    public PlayerType playerType;
+    //  player types
+    public PlayerType previousType;
+    public PlayerType currentType;
+    private SimulatedPhysics simulatedPhysics;
+    private ClassicPhysics classicPhysics;
 
     [Header("SimulatedPhysics")]
     public Transform belowPlayer;
@@ -34,9 +36,42 @@ public class PlayerController : MonoBehaviour
         rigidBody= GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        //  instantiate player type classes
         simulatedPhysics = new SimulatedPhysics(this, belowPlayer, 300f, 2f, 350f, 50f);
+        classicPhysics = new ClassicPhysics(this);
+
+        classicPhysics.Enter();
+        currentType = classicPhysics;
     }
+
+    //  //
+    #region Player Types
+            //  //
     
+    //  set types
+    public void SetSimulatedType()
+    {
+        SetType(simulatedPhysics);
+    }
+
+    public void SetClassicType()
+    {
+        SetType(classicPhysics);
+    }
+
+    public void SetType(PlayerType playerType)
+    {
+        //  exit previous type and store        
+        currentType.Exit();
+        previousType = currentType;
+
+        //  enter current type and assign
+        playerType.Enter();
+        currentType = playerType;
+    }
+
+    #endregion
+
     //  //
     #region Interact
             //  //
@@ -68,33 +103,17 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    //  //
-    #region Update()
-            //  //
     private void Update()
     {
-        if (playerType == PlayerType.Simulated)
-        {
-            simulatedPhysics._Update();
-        }
+        //  push Update() to asigned type
+        currentType._Update();
+
         InteractUpdateInput();            
     }
 
-    //  can player jump and is jump pressed
-   
-    #endregion
-
-    //  //
-    #region FixedUpdate()
-            //  //
-
     private void FixedUpdate()
     {
-        if (playerType == PlayerType.Simulated)
-        {
-            simulatedPhysics._FixedUpdate();        
-        }
+        //  push FixedUpdate() to asigned type        
+        currentType._FixedUpdate();        
     }
-
-    #endregion
 }
