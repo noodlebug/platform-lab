@@ -1139,11 +1139,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 0}
+  rigidBody: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  playerType: 0
   belowPlayer: {fileID: 1388318771}
-  acceleration: 300
-  maxSpeed: 2
-  jumpForce: 350
-  airbourneAcceleration: 50
+  acceleration: 1
+  speed: 1
+  jump: 1
+  airbourneAcceleration: 1
 --- !u!224 &922139605
 RectTransform:
   m_ObjectHideFlags: 0
