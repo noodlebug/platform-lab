@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     private bool move;
     private bool jump = false;
     private bool grounded = false;
-
     private SpriteRenderer spriteRenderer;
+    private List<Interactable> interactables = new List<Interactable>();
 
     //  public
     public GameManager game;
@@ -33,9 +33,29 @@ public class PlayerController : MonoBehaviour
     #region Interact
             //  //
 
-    public void EnterRange()
+    //  interactable in range
+    public void ExitRange(Interactable interactable)
     {
-        
+        interactables.Remove(interactable);
+    }
+
+    //  interactable out of range
+    public void EnterRange(Interactable interactable)
+    {
+        interactables.Add(interactable);
+    }
+
+    //  interaction things that happen on Update()
+    private void InteractUpdateInput()
+    {
+        game.debug.Log("interactables: ", interactables.Count.ToString());//DEBUG
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            foreach (Interactable interactable in interactables)
+            {
+                interactable.Interact();
+            }
+        }
     }
 
     #endregion
@@ -43,14 +63,15 @@ public class PlayerController : MonoBehaviour
     //  //
     #region Update()
             //  //
-
-    //  every frame
     private void Update()
     {
         game.debug.Log("Position X:", System.Math.Round(transform.position.x, 2).ToString());//DEBUG
 
         CheckJump();
+
         CheckFacing();
+
+        InteractUpdateInput();
 
         //  fix rotation to prevent obeject from falling over
         transform.rotation = new Quaternion();
@@ -123,6 +144,7 @@ public class PlayerController : MonoBehaviour
         Move(grounded);
     }
 
+    //  add upward force
     private void Jump()
     {
         if (grounded && jump)
@@ -132,6 +154,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //  add force relative to Input.GetAxis() and clamp speed to max
     private void Move(bool grounded = true)
     {
         float hAxis = Input.GetAxis("Horizontal");

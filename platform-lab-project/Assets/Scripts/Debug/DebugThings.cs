@@ -9,7 +9,7 @@ public class DebugThings
 {
     private Transform panel;
     private Text text;
-    private Dictionary<string, string> logs = new Dictionary<string, string>();
+    public Dictionary<string, string> logs = new Dictionary<string, string>();
 
     //  constructor
     public DebugThings(Transform _panel, Text _text)
