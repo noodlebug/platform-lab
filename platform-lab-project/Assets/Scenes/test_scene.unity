@@ -376,6 +376,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &87071171
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &108605119
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +496,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 108605119}
+--- !u!114 &123373724 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1536779790}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
 --- !u!1 &132787420
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +624,66 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 132787420}
+--- !u!1001 &241033046
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1042287
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.6272476
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1083355921}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &248674518
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +808,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &267412878
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10.452752
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &272999023
 Prefab:
   m_ObjectHideFlags: 0
@@ -755,6 +913,52 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &291769788
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.4627523
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &300320899
 GameObject:
@@ -904,6 +1108,172 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &313456615
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 674849159}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &316274020
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &434542322
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.1972475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1221499970}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &450187812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1538,66 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &648444858
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.779
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1646394355}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &669542211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1697,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &674849159 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 267412878}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
 --- !u!1 &688517056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1876,52 @@ Transform:
   m_Father: {fileID: 86318068}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &723110923
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &826246374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +2027,72 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 272999023}
   m_Script: {fileID: 11500000, guid: 07d87e3dab836554fbea72f722402509, type: 3}
+--- !u!1001 &868353081
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.617248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 961975579}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &961975579 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 87071171}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
 --- !u!1 &974839522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,6 +2192,160 @@ Transform:
   m_Father: {fileID: 86318068}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1000371303
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2101946037}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1063598796
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.58577144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.2262475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1066589146
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1083355921 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 316274020}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
 --- !u!1 &1156354156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +2445,64 @@ Transform:
   m_Father: {fileID: 86318068}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193721342 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 291769788}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
+--- !u!114 &1221499970 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 723110923}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
+--- !u!1001 &1362893378
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.1927524
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1372531934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2757,66 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1516634624
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.327248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2084038171}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1518813344
 Prefab:
   m_ObjectHideFlags: 0
@@ -2042,6 +2862,52 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e554fba80677bd54ca152d6ee58cd517, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1536779790
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1157713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.09448242
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280934694466170, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656097988735806, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 01436e5a42f68bb4a83582a5847209dd, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1586294247
 GameObject:
@@ -2266,7 +3132,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   belowPlayer: {fileID: 1971274127}
   acceleration: 1
-  speed: 1
+  speed: 2
   jump: 1
   airbourneAcceleration: 1
   gravity: 1
@@ -2277,13 +3143,19 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1608082895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.46, y: -1.8, z: -0.051716097}
+  m_LocalPosition: {x: 3.43, y: 1.18, z: -0.051716097}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 1971274127}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646394355 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1063598796}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
 --- !u!1 &1721351819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,6 +3759,66 @@ Transform:
   m_PrefabParentObject: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722,
     type: 2}
   m_PrefabInternal: {fileID: 16612637}
+--- !u!1001 &2027508360
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.0072474
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 123373724}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2059501416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,3 +3893,75 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059501416}
+--- !u!114 &2084038171 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1066589146}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
+--- !u!1001 &2086701926
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1193721342}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580342056481466, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+      propertyPath: m_Name
+      value: Trapdoor button (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114737632000252402, guid: cccbcfbee0c42884fa3fd001599f818e,
+        type: 2}
+      propertyPath: interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cccbcfbee0c42884fa3fd001599f818e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &2101946037 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114763435980873920, guid: 01436e5a42f68bb4a83582a5847209dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1362893378}
+  m_Script: {fileID: 11500000, guid: b298330356c287649b1a350927168d30, type: 3}
