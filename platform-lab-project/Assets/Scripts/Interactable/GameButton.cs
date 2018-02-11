@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class GameButton : Interactable
 {
+	//	sprite renderer component
 	public SpriteRenderer sprite;
+	//	sprite images
 	public Sprite onSprite;
 	public Sprite offSprite;
+
 	public bool on;
 
 	public override void Interact()
@@ -17,20 +20,20 @@ public class GameButton : Interactable
 		Toggle();
 	}
 	
-	public void Awake()
+	public void Start()
 	{
-		SetColor();
+		SetSprite();
 	}
 
 	//	toggle on/off
 	public void Toggle()
 	{	
 		on = !on;
-		SetColor();
+		SetSprite();
 	}
 
 	//	set sprite
-	private void SetColor()
+	private void SetSprite()
 	{
 		if (on)
 		{

@@ -9,14 +9,18 @@ public class GameManager : MonoBehaviour
 {
     public PlayerController player;
 	public Camera cam;
+	public UIManager ui;
+	
 	public float cameraFollowRange = 2;
-    //  debug
+    
+	//  debug
     public DebugThings debug;
     public Transform debugPanel;
 
     private void Awake()
     {
         player.game = this;
+		ui.game = this;
         debug = new DebugThings(debugPanel, debugPanel.GetComponentInChildren<Text>());
     }
 

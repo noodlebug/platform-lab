@@ -10,8 +10,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public GameManager game;    
     [HideInInspector]public Rigidbody2D rigidBody;
     [HideInInspector]public SpriteRenderer spriteRenderer;
-    private List<Interactable> interactables = new List<Interactable>();
-
+ 
     //  player types
     public PlayerType previousType;
     public PlayerType currentType;
@@ -80,28 +79,16 @@ public class PlayerController : MonoBehaviour
     #region Interact
             //  //
 
-    //  interactable in range
-    public void ExitRange(Interactable interactable)
-    {
-        interactables.Remove(interactable);
-    }
-
-    //  interactable out of range
-    public void EnterRange(Interactable interactable)
-    {
-        interactables.Add(interactable);
-    }
-
     //  interaction things that happen on Update()
     private void InteractUpdateInput()
     {
-        game.debug.Log("interactables: ", interactables.Count.ToString());//DEBUG
         if (Input.GetKeyDown(KeyCode.E))
         {
-            foreach (Interactable interactable in interactables)
-            {
-                interactable.Interact();
-            }
+            game.ui.interactable.Interact();
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            game.ui.interactable.SelectNext();
         }
     }
 
@@ -109,7 +96,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        game.debug.Log("interactables count: ", interactables.Count.ToString());
         //  push Update() to asigned type
         currentType._Update();
 
