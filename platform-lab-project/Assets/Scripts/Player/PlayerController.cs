@@ -21,12 +21,16 @@ public class PlayerController : MonoBehaviour
     [Header("SimulatedPhysics")]
     public Transform belowPlayer;
 
+    [Header("Classic Physics")]
+    float minGroundNormalY = 0.64f;
+
     [Header("General physics modifiers")]
     //  delta values applied to all movement scripts
     public float acceleration = 1f;
     public float speed = 1f;
     public float jump = 1f;
     public float airbourneAcceleration = 1f;
+    public float gravity = 1f;
 
 
 
@@ -38,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         //  instantiate player type classes
         simulatedPhysics = new SimulatedPhysics(this, belowPlayer, 300f, 2f, 350f, 50f);
-        classicPhysics = new ClassicPhysics(this);
+        classicPhysics = new ClassicPhysics(this, minGroundNormalY);
 
         classicPhysics.Enter();
         currentType = classicPhysics;
@@ -105,6 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        game.debug.Log("interactables count: ", interactables.Count.ToString());
         //  push Update() to asigned type
         currentType._Update();
 
