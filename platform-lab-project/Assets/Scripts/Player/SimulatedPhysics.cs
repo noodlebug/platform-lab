@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//  player movement using Unity physics simulation
+
 public class SimulatedPhysics : PlayerType
 {
 	//	constructor variables    

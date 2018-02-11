@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//	classic platformer player movement
+
 public class ClassicPhysics : PlayerType
 {
 	//	main direction/speed

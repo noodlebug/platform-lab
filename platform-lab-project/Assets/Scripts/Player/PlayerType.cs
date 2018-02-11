@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//	inhereted by player control scripts, used in PlayerController state machine
+
 public class PlayerType
 {
 	protected PlayerController player;
