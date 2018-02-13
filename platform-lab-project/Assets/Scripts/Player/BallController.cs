@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class BallController : PlayerEntity
 {
-	private void Awake()
+	protected override void Awake()
 	{
-		GetComps();
+		base.Awake();
 	}
-	private void Update()
+	protected override void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.F))
 		{
 			BecomePlayer();
 		}
-		InteractInput();
+		base.Update();
 	}
+
+	//	become normal player entity
 	public void BecomePlayer()
 	{
+		//	correct ball rotation as player is a child of the ball transform
 		transform.rotation = new Quaternion();
-		game.player.transform.parent = null;
 
 		//	velocity must be set in ClassicPhysics not RigidBody2D
 		game.player.SetVelocity(rigidBody.velocity);
 		
+		//	activate player
         game.player.gameObject.SetActive(true);
+
+		//	detatch player from ball and destroy ball
+		game.player.transform.parent = null;
         Destroy(this.gameObject);
 	}
 }

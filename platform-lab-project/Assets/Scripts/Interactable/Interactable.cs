@@ -38,7 +38,6 @@ public class Interactable : MonoBehaviour
 	//	collides with something
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log(collision.gameObject.name);
 		PlayerEntity entity = collision.gameObject.GetComponent<PlayerEntity>();
 		if (entity != null && entity.canInteract)
 		{

@@ -10,11 +10,17 @@ public class PlayerEntity : MonoBehaviour
 
 	public bool canInteract;
 
-	protected void GetComps()
+    //  run in awake
+	protected virtual void Awake()
     {
 		game = GameObject.FindObjectOfType<GameManager>();
         rigidBody= GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+	}
+
+    protected virtual void Update()
+	{
+		InteractInput();
 	}
 
 	protected void InteractInput()
@@ -22,9 +28,10 @@ public class PlayerEntity : MonoBehaviour
 		if (!canInteract)
 		{
 			return;
-		}
+		}        
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log(name);            
             game.ui.interactable.Interact();
         }
         else if (Input.GetKeyDown(KeyCode.Tab))

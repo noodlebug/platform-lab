@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : PlayerEntity
 {
+    public bool enableGravity;
     //  physics script
     private ClassicPhysics classicPhysics;
 
@@ -13,8 +14,13 @@ public class PlayerController : PlayerEntity
     float minGroundNormalY = 0.64f;
 
     [Header("Ball")]
-    public GameObject ballPrefab;
+    public BallController ballPrefab;
     public BallController ball;
+
+    [Header("Small balls")]
+    public SmallBall smallBallPrefab;
+
+    private List<SmallBall> smallBalls = new List<SmallBall>();
 
     [Header("Physics modifiers")]
     public float acceleration = 1f;
@@ -24,9 +30,9 @@ public class PlayerController : PlayerEntity
     public float gravity = 1f;
 
     //  when player spawns
-    private void Awake()
+    protected override void Awake()
     {
-        GetComps();
+        base.Awake();
         classicPhysics = new ClassicPhysics(this, minGroundNormalY);
     }
 
@@ -35,36 +41,65 @@ public class PlayerController : PlayerEntity
         classicPhysics.velocity = velocity;
     }
 
-    private void Update()
+    public Vector2 CursorPosition()
     {
-        //  push Update() to asigned type
-        classicPhysics._Update();
+        return game.cam.ScreenToWorldPoint(Input.mousePosition);
+    }
 
-        InteractInput();
+    protected override void Update()
+    {
+        classicPhysics._Update();
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            BecomBall();
+            BecomeBall();
+        } else if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnBalls();
         }
+
+
+        base.Update();
     }
 
     private void FixedUpdate()
     {
-        //  push FixedUpdate() to asigned type
         classicPhysics._FixedUpdate();
     }
 
-    private void BecomBall()
+    //  turn player into a ball
+    private void BecomeBall()
     {
-        ball = Instantiate(ballPrefab).GetComponent<BallController>();
+        //  set ball position to player position
+        ball = Instantiate(ballPrefab);
         ball.transform.position = transform.position;
 
-		//	velocity must be taken from ClassicPhysics not RigidBody2D        
+		//	player velocity must be taken from ClassicPhysics not RigidBody2D        
         ball.rigidBody.velocity = classicPhysics.velocity;
 
+        //  attach player to ball
         transform.parent = ball.transform;
 
+        //  activate ball deactivate player
         ball.gameObject.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    //  spawn some small balls
+    private void SpawnBalls()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            //  create a ball
+            SmallBall smBall = Instantiate(smallBallPrefab);
+
+            //  place the ball near the player
+            smBall.transform.position = transform.position + new Vector3(Random.Range(0.05f, 0.5f), Random.Range(0.05f, 0.5f));
+
+            smBall.player = this;
+
+            //  track balls
+            smallBalls.Add(smBall);
+        }
     }
 }

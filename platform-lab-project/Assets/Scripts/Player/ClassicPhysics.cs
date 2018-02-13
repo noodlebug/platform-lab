@@ -74,7 +74,7 @@ public class ClassicPhysics
 		grounded = false;
 
 		//	apply Unity gravity effect on velocity per frame
-		velocity += player.gravity * Physics2D.gravity * Time.deltaTime;
+		velocity += player.gravity * Physics2D.gravity * Time.deltaTime;			
 
 		//	per second velocity to per frame velocity
 		Vector2 positionChange = velocity * Time.deltaTime;

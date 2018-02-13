@@ -248,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21738647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.737228, y: 2.0592475, z: -0.09248346}
+  m_LocalPosition: {x: 7.45, y: 1.88, z: -0.09248346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 86318068}
@@ -393,7 +393,7 @@ Transform:
   - {fileID: 674849160}
   - {fileID: 335007893}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &87071171
 Prefab:
@@ -543,7 +543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &132787421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -558,9 +558,9 @@ RectTransform:
   m_Father: {fileID: 1803946803}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: -65}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132787422
@@ -796,11 +796,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.4927716
+      value: -0.38
       objectReference: {fileID: 0}
     - target: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.5592475
+      value: 3.86
       objectReference: {fileID: 0}
     - target: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_LocalPosition.z
@@ -816,11 +816,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.22358905
+      value: 0.16396104
       objectReference: {fileID: 0}
     - target: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9746835
+      value: -0.9864668
       objectReference: {fileID: 0}
     - target: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_RootOrder
@@ -828,7 +828,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4392563761403738, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 25.840002
+      value: -18.874
       objectReference: {fileID: 0}
     - target: {fileID: 1919663985533334, guid: cfc683a5d8d7ac8419bd10738ffab722, type: 2}
       propertyPath: m_IsActive
@@ -2583,7 +2583,7 @@ Transform:
   - {fileID: 863570277}
   - {fileID: 1427794047}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1285452558 stripped
 Transform:
@@ -3251,14 +3251,14 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1608082895}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3278,7 +3278,13 @@ MonoBehaviour:
   game: {fileID: 0}
   rigidBody: {fileID: 0}
   spriteRenderer: {fileID: 0}
-  belowPlayer: {fileID: 1971274127}
+  canInteract: 1
+  enableGravity: 1
+  ballPrefab: {fileID: 114351391518804176, guid: fc65e9ee764bda14d82319d621e86737,
+    type: 2}
+  ball: {fileID: 114351391518804176, guid: fc65e9ee764bda14d82319d621e86737, type: 2}
+  smallBallPrefab: {fileID: 114145543678622904, guid: 49288641607dc134c84bcfe1dc07390c,
+    type: 2}
   acceleration: 1
   speed: 2
   jump: 1
@@ -3291,12 +3297,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1608082895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.43, y: 1.18, z: -0.051716097}
+  m_LocalPosition: {x: 3.12, y: 0.93, z: -0.051716097}
   m_LocalScale: {x: 1, y: 2, z: 1}
-  m_Children:
-  - {fileID: 1971274127}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1629173800 stripped
 Transform:
@@ -3331,7 +3336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1721351820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3346,9 +3351,9 @@ RectTransform:
   m_Father: {fileID: 1803946803}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: -105}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721351821
@@ -3883,34 +3888,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4865259702678536, guid: e554fba80677bd54ca152d6ee58cd517,
     type: 2}
   m_PrefabInternal: {fileID: 1801514885}
---- !u!1 &1971274126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1971274127}
-  m_Layer: 8
-  m_Name: Below Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1971274127
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1971274126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1608082900}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1985705678 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4942161559906520, guid: cccbcfbee0c42884fa3fd001599f818e,
