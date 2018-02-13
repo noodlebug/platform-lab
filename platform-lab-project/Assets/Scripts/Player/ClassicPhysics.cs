@@ -8,7 +8,7 @@ public class ClassicPhysics
 {
 	private PlayerController player;	
 	//	main direction/speed
-	private Vector2 velocity;
+	public Vector2 velocity;
 
 	//	player movement input
 	private Vector2 horizontalMovement;
@@ -29,10 +29,8 @@ public class ClassicPhysics
 	// angle of current slope
 	private Vector2 groundNormal;
 
-
 	//	correct change to player rigidbody on exit
 	private RigidbodyType2D previousBodyType;
-
 	
 	public ClassicPhysics(PlayerController _player, float _minGroundNormalY)
 	{
@@ -51,10 +49,10 @@ public class ClassicPhysics
 	}
 
 	private void ComputeVelocity()
-	{		
+	{	
 		//	get horizontal movement input
 		velocity.x = (Input.GetAxis("Horizontal") *2) * player.speed;
-
+		
 		//	jump
 		if (Input.GetButtonDown("Jump") && grounded)
 		{

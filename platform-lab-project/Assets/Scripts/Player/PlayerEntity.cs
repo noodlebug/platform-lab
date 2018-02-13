@@ -12,6 +12,7 @@ public class PlayerEntity : MonoBehaviour
 
 	protected void GetComps()
     {
+		game = GameObject.FindObjectOfType<GameManager>();
         rigidBody= GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 	}

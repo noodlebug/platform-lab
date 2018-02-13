@@ -5,15 +5,18 @@ using UnityEngine;
 //  in game player input and control of the player entity
 
 public class PlayerController : PlayerEntity
-{ 
+{
     //  physics script
     private ClassicPhysics classicPhysics;
 
     [Header("Classic Physics")]
     float minGroundNormalY = 0.64f;
 
-    [Header("General physics modifiers")]
-    //  delta values applied to all movement scripts
+    [Header("Ball")]
+    public GameObject ballPrefab;
+    public BallController ball;
+
+    [Header("Physics modifiers")]
     public float acceleration = 1f;
     public float speed = 1f;
     public float jump = 1f;
@@ -27,17 +30,41 @@ public class PlayerController : PlayerEntity
         classicPhysics = new ClassicPhysics(this, minGroundNormalY);
     }
 
+    public void SetVelocity(Vector2 velocity)
+    {
+        classicPhysics.velocity = velocity;
+    }
+
     private void Update()
     {
         //  push Update() to asigned type
         classicPhysics._Update();
 
-        InteractInput();            
+        InteractInput();
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            BecomBall();
+        }
     }
 
     private void FixedUpdate()
     {
-        //  push FixedUpdate() to asigned type        
-        classicPhysics._FixedUpdate();        
+        //  push FixedUpdate() to asigned type
+        classicPhysics._FixedUpdate();
+    }
+
+    private void BecomBall()
+    {
+        ball = Instantiate(ballPrefab).GetComponent<BallController>();
+        ball.transform.position = transform.position;
+
+		//	velocity must be taken from ClassicPhysics not RigidBody2D        
+        ball.rigidBody.velocity = classicPhysics.velocity;
+
+        transform.parent = ball.transform;
+
+        ball.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

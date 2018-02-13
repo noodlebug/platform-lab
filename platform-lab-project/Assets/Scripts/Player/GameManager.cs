@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        player.game = this;
 		ui.game = this;
         debug = new DebugThings(debugPanel, debugPanel.GetComponentInChildren<Text>());
     }
