@@ -38,7 +38,7 @@ public class Interactable : MonoBehaviour
 	//	collides with something
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+		PlayerEntity player = collision.gameObject.GetComponent<PlayerController>();
 		if (player != null)
 		{
 			player.game.ui.interactable.EnterRange(this);
@@ -48,7 +48,7 @@ public class Interactable : MonoBehaviour
 	//	exits collision
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+		PlayerEntity player = collision.gameObject.GetComponent<PlayerController>();
 		if (player != null)
 		{
 			player.game.ui.interactable.ExitRange(this);

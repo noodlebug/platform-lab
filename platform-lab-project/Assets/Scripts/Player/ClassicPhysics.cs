@@ -4,8 +4,9 @@ using UnityEngine;
 
 //	classic platformer player movement
 
-public class ClassicPhysics : PlayerType
+public class ClassicPhysics
 {
+	private PlayerController player;	
 	//	main direction/speed
 	private Vector2 velocity;
 
@@ -33,8 +34,9 @@ public class ClassicPhysics : PlayerType
 	private RigidbodyType2D previousBodyType;
 
 	
-	public ClassicPhysics(PlayerController _player, float _minGroundNormalY) : base(_player)
+	public ClassicPhysics(PlayerController _player, float _minGroundNormalY)
 	{
+		player = _player;
 		minGroundNormalY = _minGroundNormalY;
 
 		//	do not detect trigger colliders, use player object collision settings
@@ -43,20 +45,7 @@ public class ClassicPhysics : PlayerType
 		 
 	}
 
-	//	enter state
-	public override void Enter()
-	{
-		previousBodyType = player.rigidBody.bodyType;
-		player.rigidBody.bodyType = RigidbodyType2D.Kinematic;
-	}
-
-	//	exit state
-	public override void Exit()
-	{
-		player.rigidBody.bodyType = previousBodyType;		
-	}
-
-	public override void _Update()
+	public void _Update()
 	{
 		ComputeVelocity();
 	}
@@ -81,7 +70,7 @@ public class ClassicPhysics : PlayerType
 		}
 	}
 
-	public override void _FixedUpdate()
+	public void _FixedUpdate()
 	{
 		//	always set grounded to false
 		grounded = false;
