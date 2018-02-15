@@ -135,10 +135,11 @@ public class ClassicPhysics
 					velocity = velocity - projection * currentNormal;
 				}
 
-				//	apply our shell radius to the cast distance ensure no overlaps
-				float modifiedDistance = hit.distance - shell;
-				//	move our intended distance if less than the cast (no overlap), otherwise use the cast distance (to avoid overlap)
-				distance = modifiedDistance < distance ? modifiedDistance : distance;
+				//	use cast distance to avoid overlap if not overlapping already
+				if (hit.distance > 0)
+				{
+					distance = Mathf.Min(hit.distance - shell, distance);									
+				}
 			}
 		}
 
