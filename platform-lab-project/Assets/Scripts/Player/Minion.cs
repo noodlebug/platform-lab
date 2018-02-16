@@ -17,7 +17,7 @@ public class Minion : PlayerEntity
 
 	protected override void Update()
     {
-        classicPhysics._Update();
+        //classicPhysics.Input(;
 
         base.Update();
     }

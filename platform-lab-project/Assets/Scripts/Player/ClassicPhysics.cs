@@ -42,30 +42,20 @@ public class ClassicPhysics
 		rigidBody = mover.GetComponent<Rigidbody2D>();
 	}
 
-
-
-	public void _Update()
-	{
-		ComputeVelocity();
-	}
-
-	private void ComputeVelocity()
+	public void Input(float hAxis, bool jumpPressed, bool jumpReleased)
 	{	
 		//	get horizontal movement input
-		velocity.x = (Input.GetAxis("Horizontal") *2) * modifiers.speed;
+		velocity.x = (hAxis *2) * modifiers.speed;
 		
 		//	jump
-		if (Input.GetButtonDown("Jump") && grounded)
+		if (jumpPressed && grounded)
 		{
 			velocity.y = 7 * modifiers.jump;
 		}
 		//	cancel jump
-		else if(Input.GetButtonUp("Jump"))
+		else if(jumpReleased && velocity.y > 0)
 		{
-			if (velocity.y > 0)
-			{
-				velocity.y = velocity.y * 0.5f;
-			}
+			velocity.y = velocity.y * 0.5f;
 		}
 	}
 
@@ -84,11 +74,11 @@ public class ClassicPhysics
 		Vector2 moveHorizontal = new Vector2(groundNormal.y, -groundNormal.x);
 
 		//	move horizontal and vertical
-		Movement(moveHorizontal * positionChange.x, false);
-		Movement(Vector2.up * positionChange.y, true);
+		rigidBody.position = Movement(moveHorizontal * positionChange.x, false);
+		rigidBody.position = Movement(Vector2.up * positionChange.y, true);
 	}
 
-	private void Movement(Vector2 offset, bool yMovement)
+	private Vector3 Movement(Vector2 offset, bool yMovement)
 	{
 		float distance = offset.magnitude;
 
@@ -144,7 +134,7 @@ public class ClassicPhysics
 		}
 
 		//	apply movement change
-		rigidBody.position = rigidBody.position + offset.normalized * distance;
+		return rigidBody.position + offset.normalized * distance;
 	}
 
 	//	used to modify everything above

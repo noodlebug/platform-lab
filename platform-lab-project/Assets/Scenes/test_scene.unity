@@ -3283,7 +3283,7 @@ MonoBehaviour:
   physicsModifiers:
     minGroundNormalY: 1
     acceleration: 1
-    speed: 1
+    speed: 2
     jump: 1
     airbourneAcceleration: 1
     gravity: 1

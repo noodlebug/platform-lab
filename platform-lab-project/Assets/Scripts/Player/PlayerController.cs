@@ -45,7 +45,7 @@ public class PlayerController : PlayerEntity
 
     protected override void Update()
     {
-        classicPhysics._Update();
+        classicPhysics.Input(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"), Input.GetButtonUp("Jump"));
 
         base.Update();
         
