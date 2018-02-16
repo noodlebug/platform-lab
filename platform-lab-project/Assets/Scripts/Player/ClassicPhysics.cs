@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class ClassicPhysics
 {
-	private PlayerController player;	
-	//	main direction/speed
+	public Modifiers modifiers;
+	public GameObject mover;
+	private Rigidbody2D rigidBody;
 	public Vector2 velocity;
 
 	//	player movement input
@@ -20,28 +21,28 @@ public class ClassicPhysics
 	//	custom filter for collisions
 	private ContactFilter2D contactFilter;
 
-	//	min angle to be considered ground
-	private float minGroundNormalY;
-
 	//	player is on ground
 	private bool grounded;
 
 	// angle of current slope
 	private Vector2 groundNormal;
 
-	//	correct change to player rigidbody on exit
-	private RigidbodyType2D previousBodyType;
+	//	min angle to be considered ground
 	
-	public ClassicPhysics(PlayerController _player, float _minGroundNormalY)
+	public ClassicPhysics(GameObject _mover, Modifiers _modifiers)
 	{
-		player = _player;
-		minGroundNormalY = _minGroundNormalY;
+		mover = _mover;
+		modifiers = _modifiers;
 
 		//	do not detect trigger colliders, use player object collision settings
 		contactFilter.useTriggers = false;
-		contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(player.gameObject.layer));
-		 
+		contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(mover.layer));
+
+		//	get rigidbody
+		rigidBody = mover.GetComponent<Rigidbody2D>();
 	}
+
+
 
 	public void _Update()
 	{
@@ -51,12 +52,12 @@ public class ClassicPhysics
 	private void ComputeVelocity()
 	{	
 		//	get horizontal movement input
-		velocity.x = (Input.GetAxis("Horizontal") *2) * player.speed;
+		velocity.x = (Input.GetAxis("Horizontal") *2) * modifiers.speed;
 		
 		//	jump
 		if (Input.GetButtonDown("Jump") && grounded)
 		{
-			velocity.y = 7 * player.jump;
+			velocity.y = 7 * modifiers.jump;
 		}
 		//	cancel jump
 		else if(Input.GetButtonUp("Jump"))
@@ -74,7 +75,7 @@ public class ClassicPhysics
 		grounded = false;
 
 		//	apply Unity gravity effect on velocity per frame
-		velocity += player.gravity * Physics2D.gravity * Time.deltaTime;			
+		velocity += modifiers.gravity * Physics2D.gravity * Time.deltaTime;			
 
 		//	per second velocity to per frame velocity
 		Vector2 positionChange = velocity * Time.deltaTime;
@@ -96,7 +97,7 @@ public class ClassicPhysics
 		{
 			//	cast player collider in direction of movement - get next frame's collisions
 			RaycastHit2D[] hits = new RaycastHit2D[16];
-			int count = player.rigidBody.Cast(offset, contactFilter, hits, distance + shell);
+			int count = rigidBody.Cast(offset, contactFilter, hits, distance + shell);
 
 			//	trim hits array to list
 			List<RaycastHit2D> hitList = new List<RaycastHit2D>();
@@ -105,7 +106,6 @@ public class ClassicPhysics
 				hitList.Add(hits[i]);
 			}
 
-			player.game.debug.Log("hit count: ", count.ToString());//DEBUG
 
 
 			//	iterate over hits (collisions next frame)
@@ -115,7 +115,7 @@ public class ClassicPhysics
 				Vector2 currentNormal = hit.normal;
 
 				//	check how steep slope is
-				if (currentNormal.y > minGroundNormalY)
+				if (currentNormal.y > 0.64f * modifiers.minGroundNormalY)
 				{
 					//	player is on ground
 					grounded = true;
@@ -144,6 +144,20 @@ public class ClassicPhysics
 		}
 
 		//	apply movement change
-		player.rigidBody.position = player.rigidBody.position + offset.normalized * distance;
+		rigidBody.position = rigidBody.position + offset.normalized * distance;
+	}
+
+	//	used to modify everything above
+	//	default values should be 1
+	[System.Serializable]
+	public struct Modifiers
+	{
+		public float minGroundNormalY;
+		public float acceleration;
+		public float speed;
+		public float jump;
+		public float airbourneAcceleration;
+		public float gravity;
 	}
 }
+

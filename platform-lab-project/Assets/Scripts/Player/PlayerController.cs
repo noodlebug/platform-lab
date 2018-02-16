@@ -8,10 +8,13 @@ public class PlayerController : PlayerEntity
 {
     public bool enableGravity;
     //  physics script
+
+    [Header("Classic Physics")]  
+    //  for normal movement, set all to 1  
+    public ClassicPhysics.Modifiers physicsModifiers;
+
     private ClassicPhysics classicPhysics;
 
-    [Header("Classic Physics")]
-    float minGroundNormalY = 0.64f;
 
     [Header("Ball")]
     public BallController ballPrefab;
@@ -22,25 +25,19 @@ public class PlayerController : PlayerEntity
 
     private List<SmallBall> smallBalls = new List<SmallBall>();
 
-    [Header("Physics modifiers")]
-    public float acceleration = 1f;
-    public float speed = 1f;
-    public float jump = 1f;
-    public float airbourneAcceleration = 1f;
-    public float gravity = 1f;
-
-    //  when player spawns
     protected override void Awake()
     {
         base.Awake();
-        classicPhysics = new ClassicPhysics(this, minGroundNormalY);
+        classicPhysics = new ClassicPhysics(this.gameObject, physicsModifiers);
     }
 
+    //  set player velocity from other scripts
     public void SetVelocity(Vector2 velocity)
     {
         classicPhysics.velocity = velocity;
     }
 
+    //  get mouse position
     public Vector2 CursorPosition()
     {
         return game.cam.ScreenToWorldPoint(Input.mousePosition);
@@ -50,6 +47,8 @@ public class PlayerController : PlayerEntity
     {
         classicPhysics._Update();
 
+        base.Update();
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             BecomeBall();
@@ -57,9 +56,6 @@ public class PlayerController : PlayerEntity
         {
             SpawnBalls();
         }
-
-
-        base.Update();
     }
 
     private void FixedUpdate()
