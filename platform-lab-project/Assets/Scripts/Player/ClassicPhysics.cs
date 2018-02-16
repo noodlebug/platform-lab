@@ -42,7 +42,7 @@ public class ClassicPhysics
 		rigidBody = mover.GetComponent<Rigidbody2D>();
 	}
 
-	public void Input(float hAxis, bool jumpPressed, bool jumpReleased)
+	public void Input(float hAxis, bool jumpPressed = false, bool jumpReleased = false)
 	{	
 		//	get horizontal movement input
 		velocity.x = (hAxis *2) * modifiers.speed;
@@ -59,7 +59,7 @@ public class ClassicPhysics
 		}
 	}
 
-	public void _FixedUpdate()
+	public void Physics()
 	{
 		//	always set grounded to false
 		grounded = false;
@@ -74,11 +74,11 @@ public class ClassicPhysics
 		Vector2 moveHorizontal = new Vector2(groundNormal.y, -groundNormal.x);
 
 		//	move horizontal and vertical
-		rigidBody.position = Movement(moveHorizontal * positionChange.x, false);
-		rigidBody.position = Movement(Vector2.up * positionChange.y, true);
+		rigidBody.position = CheckCollision(moveHorizontal * positionChange.x, false);
+		rigidBody.position = CheckCollision(Vector2.up * positionChange.y, true);
 	}
 
-	private Vector3 Movement(Vector2 offset, bool yMovement)
+	private Vector3 CheckCollision(Vector2 offset, bool jumping)
 	{
 		float distance = offset.magnitude;
 
@@ -111,7 +111,7 @@ public class ClassicPhysics
 					grounded = true;
 
 					//	if calculating vertical movement, ignore x axis and set current slope angle 
-					if (yMovement)
+					if (jumping)
 					{
 						groundNormal = currentNormal;
 						currentNormal.x = 0;

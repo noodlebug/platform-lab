@@ -3292,6 +3292,8 @@ MonoBehaviour:
   ball: {fileID: 114351391518804176, guid: fc65e9ee764bda14d82319d621e86737, type: 2}
   smallBallPrefab: {fileID: 114145543678622904, guid: 49288641607dc134c84bcfe1dc07390c,
     type: 2}
+  minionPrefab: {fileID: 114175871010012992, guid: 18d85f59a035cc140ad5b686aa4f6554,
+    type: 2}
 --- !u!4 &1608082900
 Transform:
   m_ObjectHideFlags: 0

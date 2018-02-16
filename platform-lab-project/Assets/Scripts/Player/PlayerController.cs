@@ -13,7 +13,7 @@ public class PlayerController : PlayerEntity
     //  for normal movement, set all to 1  
     public ClassicPhysics.Modifiers physicsModifiers;
 
-    private ClassicPhysics classicPhysics;
+    private ClassicPhysics physics;
 
 
     [Header("Ball")]
@@ -25,16 +25,21 @@ public class PlayerController : PlayerEntity
 
     private List<SmallBall> smallBalls = new List<SmallBall>();
 
+    [Header("Minions")]
+    public Minion minionPrefab;
+
+    private List<Minion> minions = new List<Minion>();
+
     protected override void Awake()
     {
         base.Awake();
-        classicPhysics = new ClassicPhysics(this.gameObject, physicsModifiers);
+        physics = new ClassicPhysics(this.gameObject, physicsModifiers);
     }
 
     //  set player velocity from other scripts
     public void SetVelocity(Vector2 velocity)
     {
-        classicPhysics.velocity = velocity;
+        physics.velocity = velocity;
     }
 
     //  get mouse position
@@ -45,22 +50,38 @@ public class PlayerController : PlayerEntity
 
     protected override void Update()
     {
-        classicPhysics.Input(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"), Input.GetButtonUp("Jump"));
-
         base.Update();
         
+        //  movement input
+        physics.Input(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"), Input.GetButtonUp("Jump"));
+
+        //  command minions to move
+        if (Input.GetButtonDown("Fire1"))
+        {
+            foreach (Minion minion in minions)
+            {
+                minion.MoveToPoint(CursorPosition());
+            }
+        }        
+                
+        //  special input
         if (Input.GetKeyDown(KeyCode.F))
         {
             BecomeBall();
-        } else if (Input.GetKeyDown(KeyCode.C))
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
         {
             SpawnBalls();
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            SpawnMinions();
         }
     }
 
     private void FixedUpdate()
     {
-        classicPhysics._FixedUpdate();
+        physics.Physics();
     }
 
     //  turn player into a ball
@@ -71,7 +92,7 @@ public class PlayerController : PlayerEntity
         ball.transform.position = transform.position;
 
 		//	player velocity must be taken from ClassicPhysics not RigidBody2D        
-        ball.rigidBody.velocity = classicPhysics.velocity;
+        ball.rigidBody.velocity = physics.velocity;
 
         //  attach player to ball
         transform.parent = ball.transform;
@@ -96,6 +117,34 @@ public class PlayerController : PlayerEntity
 
             //  track balls
             smallBalls.Add(smBall);
+        }
+    }
+
+    //  spawn some minions
+    private void SpawnMinions()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            //  create a minion
+            Minion minion = Instantiate(minionPrefab);
+
+            //  place the minion near the player
+            minion.transform.position = transform.position + new Vector3(Random.Range(0.05f, 0.5f), Random.Range(0.05f, 0.5f));
+
+            minion.player = this;
+            minion.ai = new StateMachine(game);
+
+            //  track minion
+            minions.Add(minion);
+        }
+    }
+
+    //  command all minions to move in the direction of a point
+    private void MoveMinions(Vector2 point)
+    {
+        foreach (Minion minion in  minions)
+        {
+            minion.MoveToPoint(point);
         }
     }
 }
