@@ -22,6 +22,8 @@ public class StateMachine
 
 		currentBehaviour = newBehaviour;
 		currentBehaviour.Enter();
+		game.debug.Log("AI state: ", currentBehaviour.ToString());
+		UnityEngine.Debug.Log("changed state: " + currentBehaviour.ToString());
 	}
 
 	//	clear current behaviour
@@ -29,6 +31,7 @@ public class StateMachine
 	{
 		currentBehaviour.Exit();
 		currentBehaviour = null;
+		game.debug.Log("AI state: ", "");
 	}
 
 	//	push update and fixedupdate to current behaviour

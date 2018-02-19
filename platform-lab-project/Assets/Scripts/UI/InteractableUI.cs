@@ -25,6 +25,10 @@ public class InteractableUI
     //  invoke interaction
     public void Interact()
     {
+        if (interactables.Count == 0)
+        {
+            return;
+        }
         interactables[selected].Interact();
     }
 

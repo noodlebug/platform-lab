@@ -47,6 +47,7 @@ public static class MinionAI
 	{
 		//	target destination (direction)
 		private Vector2 point;
+		private float axis;
 		public MoveTo(StateMachine _machine, ClassicPhysics _physics, Vector2 _point) : base(_machine, _physics)
 		{
 			point = _point;
@@ -54,26 +55,31 @@ public static class MinionAI
 
 		public override void _Update()
 		{
+			int leftRightModifier;
+			if (point.x > mover.position.x)
+			{
+				leftRightModifier = 1;
+			}
+			else
+			{
+				leftRightModifier = -1;
+			}
+
 			//	reached destination
-			if (Vector2.Distance(point, mover.position) > 1)
+			machine.game.debug.Log("Vector2.Distance(point, mover.position)", Vector2.Distance(point, mover.position).ToString());
+			if ((point.x - mover.position.x) * leftRightModifier < 0.1f)
 			{
 				machine.Kill();
 				return;
 			}
 
 			//	move towards destination
-			if (point.x > mover.position.x)
-			{
-				machine.game.debug.Log(mover.position.x.ToString(), point.x.ToString());
-				//	right
-				physics.Input(4);				
-			}
-			else
-			{
-				//	left
-				physics.Input(-4);								
-			}
+			physics.Input(leftRightModifier);
+		}
 
+		protected override void ExitDirived()
+		{
+			physics.Input(0);			
 		}
 	}
 }

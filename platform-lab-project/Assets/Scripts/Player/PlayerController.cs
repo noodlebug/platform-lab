@@ -54,6 +54,7 @@ public class PlayerController : PlayerEntity
         
         //  movement input
         physics.Input(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"), Input.GetButtonUp("Jump"));
+        game.debug.Log("Input.GetAxis(\"Horizontal\")", Input.GetAxis("Horizontal").ToString());
 
         //  command minions to move
         if (Input.GetButtonDown("Fire1"))

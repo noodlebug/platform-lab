@@ -9,6 +9,7 @@ public class PlayerEntity : MonoBehaviour
     [HideInInspector]public SpriteRenderer spriteRenderer;
 
 	public bool canInteract;
+    public bool isPlayer;
 
     //  run in awake
 	protected virtual void Awake()
@@ -25,7 +26,7 @@ public class PlayerEntity : MonoBehaviour
 
 	protected void InteractInput()
     {
-		if (!canInteract)
+		if (!canInteract || !isPlayer)
 		{
 			return;
 		}        
