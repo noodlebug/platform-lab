@@ -27,11 +27,12 @@ public class GameManager : MonoBehaviour
     {
         //  push Update() to non Monobehaviour class DebugThings
         debug.RefreshStrings();
+		CameraFollow(cameraFollowRange);
+		
     }
 
 	private void FixedUpdate()
 	{
-		CameraFollow(cameraFollowRange);
 	}
 
 	//  camera follow
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 
+		
 		//	adjust camera position
 		cam.transform.Translate(translation);
 	}

@@ -22,6 +22,7 @@ public class StateMachine
 
 		currentBehaviour = newBehaviour;
 		currentBehaviour.Enter();
+		
 		game.debug.Log("AI state: ", currentBehaviour.ToString());
 		UnityEngine.Debug.Log("changed state: " + currentBehaviour.ToString());
 	}
