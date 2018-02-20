@@ -10,13 +10,15 @@ public class PlayerController : PlayerEntity
     
     public bool enableGravity;
 
+    //  last time jump was pressed, set to -100 to avoid jumping on play
+    private float jumpPressed = -100;
+
     [Header("Classic Physics")]  
     //  for normal movement, set all to 1  
     public ClassicPhysics.Modifiers physicsModifiers;
 
     //  physics script
     private ClassicPhysics physics;
-
 
     [Header("Ball")]
     public BallController ballPrefab;
@@ -53,32 +55,36 @@ public class PlayerController : PlayerEntity
     protected override void Update()
     {
         base.Update();
+        bool jump = false;
         
-        //  movement input
-        physics.Input(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"), Input.GetButtonUp("Jump"));
-        game.debug.Log("Input.GetAxis(\"Horizontal\")", Input.GetAxis("Horizontal").ToString());
-
-        //  command minions to move
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Jump"))
         {
-            foreach (Minion minion in minions)
-            {
-                minion.MoveToPoint(CursorPosition());
-            }
-        }        
-        
+            //  record time of last jump press
+            jumpPressed = Time.time;
+        }
+
+        if (Time.time - jumpPressed < 0.1f)
+        {
+            //  jump was pressed within last 0.1 seconds
+            jump = true;
+        }
+
+        //  movement input
+        physics.Input(Input.GetAxis("Horizontal"), jump, Input.GetButtonUp("Jump"));
+
         if (Input.GetKeyDown(KeyCode.S))
         {
+            //  crouch down
             physics.Crouch(spriteRenderer.bounds.size.y);
             crouched = true;
         }
         else if (!Input.GetKey(KeyCode.S) && crouched)
         {
+            //  crouch up
             physics.Uncrouch(spriteRenderer.bounds.size.y);
             crouched = false;
         }
 
-        //  special input
         ToyInput();
     }
 
@@ -90,6 +96,15 @@ public class PlayerController : PlayerEntity
 
     private void ToyInput()
     {
+        //  command minions to move
+        if (Input.GetButtonDown("Fire1"))
+        {
+            foreach (Minion minion in minions)
+            {
+                minion.MoveToPoint(CursorPosition());
+            }
+        } 
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             BecomeBall();
