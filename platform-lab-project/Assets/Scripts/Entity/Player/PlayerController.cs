@@ -55,22 +55,15 @@ public class PlayerController : PlayerEntity
     protected override void Update()
     {
         base.Update();
-        bool jump = false;
-        
+
+        //  record time of last jump press
         if (Input.GetButtonDown("Jump"))
         {
-            //  record time of last jump press
             jumpPressed = Time.time;
         }
 
-        if (Time.time - jumpPressed < 0.1f)
-        {
-            //  jump was pressed within last 0.1 seconds
-            jump = true;
-        }
-
         //  movement input
-        physics.Input(Input.GetAxis("Horizontal"), jump, Input.GetButtonUp("Jump"));
+        physics.Input(Input.GetAxis("Horizontal"), (Time.time - jumpPressed < 0.1f), Input.GetButtonUp("Jump"));
 
         if (Input.GetKeyDown(KeyCode.S))
         {
