@@ -9,7 +9,7 @@ public class PlayerEntity : MonoBehaviour
     [HideInInspector]public SpriteRenderer spriteRenderer;
 
 	public bool canInteract;
-    public bool isPlayer;
+    public bool isPlayer;    
 
     //  run in awake
 	protected virtual void Awake()

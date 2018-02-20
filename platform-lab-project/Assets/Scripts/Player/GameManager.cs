@@ -30,11 +30,7 @@ public class GameManager : MonoBehaviour
 		CameraFollow(cameraFollowRange);
 		
     }
-
-	private void FixedUpdate()
-	{
-	}
-
+	
 	//  camera follow
 	private void CameraFollow(float maxDistance)
 	{

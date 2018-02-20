@@ -137,6 +137,25 @@ public class ClassicPhysics
 		return rigidBody.position + offset.normalized * distance;
 	}
 
+	public void Crouch(float boundsY)
+    {
+		//	1/2 Y scale
+        Vector3 scale = new Vector3(mover.transform.localScale.x, mover.transform.localScale.y / 2, mover.transform.localScale.z);
+        mover.transform.localScale = scale;
+
+		//	move down 1/4 height		
+		mover.transform.position = mover.transform.position + new Vector3(0, -(boundsY / 4), 0);
+    }
+	public void Uncrouch(float boundsY)
+	{
+		// *2 Y scale
+		Vector3 scale = new Vector3(mover.transform.localScale.x, mover.transform.localScale.y * 2, mover.transform.localScale.z);
+        mover.transform.localScale = scale;
+
+		//	move up 1/4 height
+		mover.transform.position = mover.transform.position + new Vector3(0, (boundsY / 2), 0);
+	}
+
 	//	used to modify everything above
 	//	default values should be 1
 	[System.Serializable]

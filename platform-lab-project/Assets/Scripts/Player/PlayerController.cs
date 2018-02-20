@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class PlayerController : PlayerEntity
 {
+    public bool crouched;
+    
     public bool enableGravity;
-    //  physics script
 
     [Header("Classic Physics")]  
     //  for normal movement, set all to 1  
     public ClassicPhysics.Modifiers physicsModifiers;
 
+    //  physics script
     private ClassicPhysics physics;
 
 
@@ -64,8 +66,30 @@ public class PlayerController : PlayerEntity
                 minion.MoveToPoint(CursorPosition());
             }
         }        
-                
+        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            physics.Crouch(spriteRenderer.bounds.size.y);
+            crouched = true;
+        }
+        else if (!Input.GetKey(KeyCode.S) && crouched)
+        {
+            physics.Uncrouch(spriteRenderer.bounds.size.y);
+            crouched = false;
+        }
+
         //  special input
+        ToyInput();
+    }
+
+    
+
+    //  //
+    #region Toys
+            //  //
+
+    private void ToyInput()
+    {
         if (Input.GetKeyDown(KeyCode.F))
         {
             BecomeBall();
@@ -148,4 +172,6 @@ public class PlayerController : PlayerEntity
             minion.MoveToPoint(point);
         }
     }
+
+    #endregion
 }

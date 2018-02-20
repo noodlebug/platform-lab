@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class StateMachine
 {
 	public GameManager game;
+	public MinionAI.Behaviour defaultBehaviour;
 	
 	public StateMachine(GameManager _game)
 	{
@@ -22,13 +23,12 @@ public class StateMachine
 
 		currentBehaviour = newBehaviour;
 		currentBehaviour.Enter();
-		
 		game.debug.Log("AI state: ", currentBehaviour.ToString());
 		UnityEngine.Debug.Log("changed state: " + currentBehaviour.ToString());
 	}
 
 	//	clear current behaviour
-	public void Kill()
+	public void EndBehaviour()
 	{
 		currentBehaviour.Exit();
 		currentBehaviour = null;
