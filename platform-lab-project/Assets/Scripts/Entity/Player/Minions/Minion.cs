@@ -12,7 +12,7 @@ public class Minion : PlayerEntity
 	protected override void Awake()
     {
         base.Awake();
-        physics = new ClassicPhysics(this.gameObject, physicsModifiers);
+        //physics = new ClassicPhysics(this.gameObject, physicsModifiers);
     }
 
 	protected override void Update()
@@ -28,12 +28,12 @@ public class Minion : PlayerEntity
         //  push fixed update to ai
         ai._FixedUpdate();
 
-        physics.Physics();
+        //physics.Physics();
     }
     
     //  enter move to ai behaviour
     public void MoveToPoint(Vector2 point)
     {
-        ai.ChangeBehaviour(new MinionAI.MoveTo(ai, physics, point));
+        //ai.ChangeBehaviour(new MinionAI.MoveTo(ai, physics, point));
     }
 }

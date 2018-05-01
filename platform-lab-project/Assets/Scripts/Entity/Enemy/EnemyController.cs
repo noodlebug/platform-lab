@@ -15,7 +15,7 @@ public class EnemyController : EnemyEntity
         base.Awake();
 
         state = new StateMachine(this);
-        state.ChangeBehaviour(new EnemyAI.Patrol(state, physics, patrolPoints));
+        //state.ChangeBehaviour(new EnemyAI.Patrol(state, physics, patrolPoints));
     }
 
     private void Update()

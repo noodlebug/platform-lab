@@ -9,10 +9,10 @@ public class Entity : MonoBehaviour
 
     [Header("Physics")]  
     //  for normal movement, set all to 1  
-    public ClassicPhysics.Modifiers physicsModifiers;
+    //public ClassicPhysics.Modifiers physicsModifiers;
 
     //  physics script
-    protected ClassicPhysics physics;
+    //protected ClassicPhysics physics;
 
 	[HideInInspector]public GameManager game;    
     [HideInInspector]public Rigidbody2D rigidBody;
@@ -24,7 +24,7 @@ public class Entity : MonoBehaviour
 		game = GameObject.FindObjectOfType<GameManager>();
         rigidBody= GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        physics = new ClassicPhysics(this.gameObject, physicsModifiers);
+        //physics = new ClassicPhysics(this.gameObject, physicsModifiers);
         
 	}
 

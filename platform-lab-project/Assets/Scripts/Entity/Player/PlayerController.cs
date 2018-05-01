@@ -33,7 +33,7 @@ public class PlayerController : PlayerEntity
     //  set player velocity from other scripts
     public void SetVelocity(Vector2 velocity)
     {
-        physics.velocity = velocity;
+        rigidBody.velocity = velocity;
     }
 
     //  get mouse position
@@ -46,7 +46,7 @@ public class PlayerController : PlayerEntity
     {
         base.Update();
 
-        float hAxis = Input.GetAxis("Horizontal");
+        /*float hAxis = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump"))
         {
             jumpPressed = Time.time;
@@ -75,7 +75,7 @@ public class PlayerController : PlayerEntity
             //  crouch up
             physics.Uncrouch(spriteRenderer.bounds.size.y);
             crouched = false;
-        }
+        }*/
 
         ToyInput();
     }
@@ -113,7 +113,7 @@ public class PlayerController : PlayerEntity
 
     private void FixedUpdate()
     {
-        physics.Physics();
+        //physics.Physics();
     }
 
     //  turn player into a ball
@@ -124,7 +124,7 @@ public class PlayerController : PlayerEntity
         ball.transform.position = transform.position;
 
 		//	player velocity must be taken from ClassicPhysics not RigidBody2D        
-        ball.rigidBody.velocity = physics.velocity;
+        ball.rigidBody.velocity = rigidBody.velocity;
 
         //  attach player to ball
         transform.parent = ball.transform;
