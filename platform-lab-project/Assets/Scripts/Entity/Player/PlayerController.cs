@@ -8,6 +8,9 @@ public class PlayerController : PlayerEntity
 {
     public bool crouched;
     
+    public float jumpForce;
+    public float speed;
+
     //  last time jump was pressed, set to -100 to avoid jumping on play
     private float jumpPressed = -100;
 
@@ -46,12 +49,20 @@ public class PlayerController : PlayerEntity
     {
         base.Update();
 
-        /*float hAxis = Input.GetAxis("Horizontal");
+        // start/stop jump
         if (Input.GetButtonDown("Jump"))
         {
+            rigidBody.AddForce(new Vector2(0, jumpForce));
             jumpPressed = Time.time;
         }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y / 2);
+        }
 
+        // horizontal input
+        float hAxis = Input.GetAxis("Horizontal");
+        
         // if moving and facing the wrong direction
         if (hAxis != 0 && facingRight != (hAxis > 0))
         {
@@ -61,21 +72,18 @@ public class PlayerController : PlayerEntity
             spriteRenderer.sprite = GetSprite();
         }
         
-        //  movement input
-        physics.Input(hAxis, (Time.time - jumpPressed < 0.1f), Input.GetButtonUp("Jump"));
-
-        if (Input.GetKeyDown(KeyCode.S))
+        if (!Input.GetButton("Horizontal"))
         {
-            //  crouch down
-            physics.Crouch(spriteRenderer.bounds.size.y);
-            crouched = true;
+            //  divide velocity by zero, zero out velocity when low
+            float xVelocity = rigidBody.velocity.x < 0.01f ? 0 : rigidBody.velocity.x / 1.5f;
+            rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
         }
-        else if (!Input.GetKey(KeyCode.S) && crouched)
+        else
         {
-            //  crouch up
-            physics.Uncrouch(spriteRenderer.bounds.size.y);
-            crouched = false;
-        }*/
+            //  apply input axis as addforce unless at max speed
+            float xVelocity = rigidBody.velocity.x >= speed ? 0 : hAxis;
+            rigidBody.AddForce(new Vector2(xVelocity * 10, 0));        
+        }
 
         ToyInput();
     }
