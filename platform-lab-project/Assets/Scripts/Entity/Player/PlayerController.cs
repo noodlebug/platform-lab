@@ -8,17 +8,8 @@ public class PlayerController : PlayerEntity
 {
     public bool crouched;
     
-    public bool enableGravity;
-
     //  last time jump was pressed, set to -100 to avoid jumping on play
     private float jumpPressed = -100;
-
-    [Header("Classic Physics")]  
-    //  for normal movement, set all to 1  
-    public ClassicPhysics.Modifiers physicsModifiers;
-
-    //  physics script
-    private ClassicPhysics physics;
 
     [Header("Ball")]
     public BallController ballPrefab;
@@ -37,7 +28,6 @@ public class PlayerController : PlayerEntity
     protected override void Awake()
     {
         base.Awake();
-        physics = new ClassicPhysics(this.gameObject, physicsModifiers);
     }
 
     //  set player velocity from other scripts
@@ -56,14 +46,23 @@ public class PlayerController : PlayerEntity
     {
         base.Update();
 
-        //  record time of last jump press
+        float hAxis = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump"))
         {
             jumpPressed = Time.time;
         }
 
+        // if moving and facing the wrong direction
+        if (hAxis != 0 && facingRight != (hAxis > 0))
+        {
+            //  set current direction
+            facingRight = (hAxis > 0);
+            //  change sprite
+            spriteRenderer.sprite = GetSprite();
+        }
+        
         //  movement input
-        physics.Input(Input.GetAxis("Horizontal"), (Time.time - jumpPressed < 0.1f), Input.GetButtonUp("Jump"));
+        physics.Input(hAxis, (Time.time - jumpPressed < 0.1f), Input.GetButtonUp("Jump"));
 
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -81,7 +80,7 @@ public class PlayerController : PlayerEntity
         ToyInput();
     }
 
-    
+
 
     //  //
     #region Toys
@@ -108,7 +107,7 @@ public class PlayerController : PlayerEntity
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            SpawnMinions();
+            //SpawnMinions();
         }
     }
 
@@ -165,7 +164,7 @@ public class PlayerController : PlayerEntity
             minion.transform.position = transform.position + new Vector3(Random.Range(0.05f, 0.5f), Random.Range(0.05f, 0.5f));
 
             minion.player = this;
-            minion.ai = new StateMachine(game);
+            minion.ai = new StateMachine(this);
 
             //  track minion
             minions.Add(minion);

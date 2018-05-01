@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 public class StateMachine
 {
-	public GameManager game;
-	public MinionAI.Behaviour defaultBehaviour;
+	public Entity entity;
+	public Behaviour defaultBehaviour;
 	
-	public StateMachine(GameManager _game)
+	public Behaviour currentBehaviour;	
+
+	public StateMachine(Entity _entity)
 	{
-		game = _game;
+		entity = _entity;
 	}
 	
-	public MinionAI.Behaviour currentBehaviour;
-
 	//	change current behaviour
-	public void ChangeBehaviour(MinionAI.Behaviour newBehaviour)
+	public void ChangeBehaviour(Behaviour newBehaviour)
 	{	
 		if (currentBehaviour != null)
 		{
@@ -23,16 +23,13 @@ public class StateMachine
 
 		currentBehaviour = newBehaviour;
 		currentBehaviour.Enter();
-		game.debug.Log("AI state: ", currentBehaviour.ToString());
-		UnityEngine.Debug.Log("changed state: " + currentBehaviour.ToString());
 	}
 
 	//	clear current behaviour
 	public void EndBehaviour()
 	{
 		currentBehaviour.Exit();
-		currentBehaviour = null;
-		game.debug.Log("AI state: ", "");
+		currentBehaviour = defaultBehaviour;
 	}
 
 	//	push update and fixedupdate to current behaviour

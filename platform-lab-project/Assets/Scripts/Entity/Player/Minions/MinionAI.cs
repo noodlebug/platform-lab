@@ -4,45 +4,7 @@ using UnityEngine;
 
 public static class MinionAI
 {
-	//	base behaviour class
-	public class Behaviour
-	{
-		//	state machine running the behavious
-		protected StateMachine machine;
-		//	physics script used by the entity
-		protected ClassicPhysics physics;
-		//	entity transform	
-		protected Transform mover;
-		public Behaviour(StateMachine _machine, ClassicPhysics _physics)
-		{
-			machine = _machine;
-			physics = _physics;
-			mover = _physics.mover.transform;
-		}
-
-		//	Enter() and Exit() are always run by the state machine
-		public void Enter()
-		{
-			//	do stuff
-			EnterDirived();
-		}
-
-		public void Exit()
-		{
-			ExitDirived();
-			//	do stuff
-		}
-
-		//	used in dirived class if needed
-		protected virtual void EnterDirived() { }
-		protected virtual void ExitDirived(){ }
-
-		public virtual void _Update() { }
-		public virtual void _FixedUpdate() { }
-		
-	}
-
-	//	behaviour classes
+	//	move to point
 	public class MoveTo : Behaviour
 	{
 		//	target destination (direction)
@@ -67,7 +29,8 @@ public static class MinionAI
 		{
 			float accel = Mathf.SmoothStep(0, 1, Time.time - startTime / accelTime);
 			int leftRightModifier;
-			if (point.x > mover.position.x)
+			
+			if (point.x > transform.position.x)
 			{
 				leftRightModifier = 1;
 			}
@@ -77,7 +40,7 @@ public static class MinionAI
 			}
 
 			//	reached destination
-			if ((point.x - mover.position.x) * leftRightModifier < randomFinish)
+			if ((point.x - transform.position.x) * leftRightModifier < randomFinish)
 			{
 				machine.EndBehaviour();
 				return;

@@ -6,14 +6,9 @@ public class Minion : PlayerEntity
 {
 	public PlayerController player;
 
-	[Header("Classic Physics")]  
-    //  for normal movement, set all to 1  
-    public ClassicPhysics.Modifiers physicsModifiers;
-
     //  statemachine used to manage ai behaviours
     public StateMachine ai;
 
-    private ClassicPhysics physics;
 	protected override void Awake()
     {
         base.Awake();
@@ -35,7 +30,7 @@ public class Minion : PlayerEntity
 
         physics.Physics();
     }
-
+    
     //  enter move to ai behaviour
     public void MoveToPoint(Vector2 point)
     {

@@ -7,7 +7,7 @@ using UnityEngine;
 public class ClassicPhysics
 {
 	public Modifiers modifiers;
-	public GameObject mover;
+	public GameObject gObj;
 	private Rigidbody2D rigidBody;
 	public Vector2 velocity;
 
@@ -29,17 +29,17 @@ public class ClassicPhysics
 
 	//	min angle to be considered ground
 	
-	public ClassicPhysics(GameObject _mover, Modifiers _modifiers)
+	public ClassicPhysics(GameObject _gObj, Modifiers _modifiers)
 	{
-		mover = _mover;
+		gObj = _gObj;
 		modifiers = _modifiers;
 
 		//	do not detect trigger colliders, use player object collision settings
 		contactFilter.useTriggers = false;
-		contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(mover.layer));
+		contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gObj.layer));
 
 		//	get rigidbody
-		rigidBody = mover.GetComponent<Rigidbody2D>();
+		rigidBody = gObj.GetComponent<Rigidbody2D>();
 	}
 
 	public void Input(float hAxis, bool jumpPressed = false, bool jumpReleased = false)
@@ -139,21 +139,23 @@ public class ClassicPhysics
 
 	public void Crouch(float boundsY)
     {
+		Vector3 currentScale = gObj.transform.localScale;
 		//	1/2 Y scale
-        Vector3 scale = new Vector3(mover.transform.localScale.x, mover.transform.localScale.y / 2, mover.transform.localScale.z);
-        mover.transform.localScale = scale;
+        Vector3 newScale = new Vector3(currentScale.x, currentScale.y / 2, currentScale.z);
+        gObj.transform.localScale = newScale;
 
 		//	move down 1/4 height		
-		mover.transform.position = mover.transform.position + new Vector3(0, -(boundsY / 4), 0);
+		gObj.transform.position = gObj.transform.position + new Vector3(0, -(boundsY / 4), 0);
     }
 	public void Uncrouch(float boundsY)
 	{
+		Vector3 currentScale = gObj.transform.localScale;		
 		// *2 Y scale
-		Vector3 scale = new Vector3(mover.transform.localScale.x, mover.transform.localScale.y * 2, mover.transform.localScale.z);
-        mover.transform.localScale = scale;
+		Vector3 newScale = new Vector3(currentScale.x, currentScale.y * 2, currentScale.z);
+        gObj.transform.localScale = newScale;
 
 		//	move up 1/4 height
-		mover.transform.position = mover.transform.position + new Vector3(0, (boundsY / 2), 0);
+		gObj.transform.position = gObj.transform.position + new Vector3(0, (boundsY / 2), 0);
 	}
 
 	//	used to modify everything above
