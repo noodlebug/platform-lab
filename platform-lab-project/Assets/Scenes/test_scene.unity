@@ -2515,7 +2515,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2541,11 +2541,12 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   spriteRenderer: {fileID: 0}
   facingRight: 0
+  grounded: 0
   canInteract: 1
   isPlayer: 1
   crouched: 0
-  jumpForce: 350
-  speed: 5
+  jumpForce: 3500
+  speed: 3
   ballPrefab: {fileID: 114351391518804176, guid: fc65e9ee764bda14d82319d621e86737,
     type: 2}
   ball: {fileID: 114351391518804176, guid: fc65e9ee764bda14d82319d621e86737, type: 2}

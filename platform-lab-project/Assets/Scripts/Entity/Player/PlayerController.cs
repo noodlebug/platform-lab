@@ -12,7 +12,8 @@ public class PlayerController : PlayerEntity
     public float speed;
 
     //  last time jump was pressed, set to -100 to avoid jumping on play
-    private float jumpPressed = -100;
+    private float jumpPressedTime = 0;
+    private bool jumpPressed = false;
 
     [Header("Ball")]
     public BallController ballPrefab;
@@ -49,15 +50,52 @@ public class PlayerController : PlayerEntity
     {
         base.Update();
 
-        // start/stop jump
+        Move();
+
+        ToyInput();
+    }
+
+    private void FixedUpdate()
+    {
+        //physics.Physics();
+        grounded = Grounded();
+        game.debug.Log("Player grounded", grounded.ToString()); 
+    }
+
+    #region Movement
+
+    private void Move()
+    {
+        // store time that jump was pressed
         if (Input.GetButtonDown("Jump"))
         {
-            rigidBody.AddForce(new Vector2(0, jumpForce));
-            jumpPressed = Time.time;
+            jumpPressedTime = Time.time;
+            jumpPressed = true;
         }
-        else if (Input.GetButtonUp("Jump"))
+        //stop jumping
+        else if (Input.GetButtonUp("Jump") && rigidBody.velocity.y > 0)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y / 2);
+        }
+
+        //  enable player to press jump just before landing
+        if (jumpPressed)
+        {   
+            //  jump was pressed within 0.25f seconds of current time
+            if ((Time.time - jumpPressedTime < 0.25f))
+            {
+                //  wait until grounded to jump
+                if (grounded)
+                {
+                    rigidBody.AddForce(new Vector2(0, jumpForce));
+                    jumpPressed = false;
+                }
+            }
+            //  2.5 seconds elapsed, jump no longer pressed
+            else
+            {
+                jumpPressed = false;
+            }
         }
 
         // horizontal input
@@ -82,13 +120,11 @@ public class PlayerController : PlayerEntity
         {
             //  apply input axis as addforce unless at max speed
             float xVelocity = rigidBody.velocity.x >= speed ? 0 : hAxis;
-            rigidBody.AddForce(new Vector2(xVelocity * 10, 0));        
+            rigidBody.AddForce(new Vector2(xVelocity * 100, 0));        
         }
-
-        ToyInput();
     }
 
-
+    #endregion
 
     //  //
     #region Toys
@@ -117,12 +153,7 @@ public class PlayerController : PlayerEntity
         {
             //SpawnMinions();
         }
-    }
-
-    private void FixedUpdate()
-    {
-        //physics.Physics();
-    }
+    } 
 
     //  turn player into a ball
     private void BecomeBall()
