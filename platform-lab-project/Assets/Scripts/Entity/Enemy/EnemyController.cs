@@ -21,7 +21,7 @@ public class EnemyController : EnemyEntity
     private void Update()
     {
         state._Update();
-        spriteRenderer.sprite = GetSprite();
+        spriteRenderer.sprite = SetSprite();
     }
 
     private void FixedUpdate()

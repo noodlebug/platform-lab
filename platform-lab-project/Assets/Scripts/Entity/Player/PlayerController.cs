@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class PlayerController : PlayerEntity
 {
-    public bool crouched;
-    
+
     public float jumpForce;
     public float speed;
 
-    //  last time jump was pressed, set to -100 to avoid jumping on play
+    // movement
     private float jumpPressedTime = 0;
     private bool jumpPressed = false;
+
+    private float hAxis;
 
     [Header("Ball")]
     public BallController ballPrefab;
@@ -99,7 +100,7 @@ public class PlayerController : PlayerEntity
         }
 
         // horizontal input
-        float hAxis = Input.GetAxis("Horizontal");
+        hAxis = Input.GetAxisRaw("Horizontal");
         
         // if moving and facing the wrong direction
         if (hAxis != 0 && facingRight != (hAxis > 0))
@@ -107,21 +108,22 @@ public class PlayerController : PlayerEntity
             //  set current direction
             facingRight = (hAxis > 0);
             //  change sprite
-            spriteRenderer.sprite = GetSprite();
+            spriteRenderer.sprite = SetSprite();
         }
-        
-        if (!Input.GetButton("Horizontal"))
+
+        float xForce = 0;
+
+        if (hAxis != 0)
         {
-            //  divide velocity by zero, zero out velocity when low
-            float xVelocity = rigidBody.velocity.x < 0.01f ? 0 : rigidBody.velocity.x / 1.5f;
-            rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
+            xForce = (rigidBody.mass * (speed - (rigidBody.velocity.x * hAxis))) * hAxis;
         }
-        else
+        // both A and D are pressed
+        else if (rigidBody.velocity.x != 0)
         {
-            //  apply input axis as addforce unless at max speed
-            float xVelocity = rigidBody.velocity.x >= speed ? 0 : hAxis;
-            rigidBody.AddForce(new Vector2(xVelocity * 100, 0));        
+            xForce = (rigidBody.mass * rigidBody.velocity.x) * -1;
         }
+
+        rigidBody.AddForce(new Vector2(xForce, 0), mode: ForceMode2D.Impulse);
     }
 
     #endregion

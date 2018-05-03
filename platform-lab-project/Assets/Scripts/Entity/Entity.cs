@@ -41,7 +41,7 @@ public class Entity : MonoBehaviour
 	    contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
 	}
 
-    public Sprite GetSprite()
+    public Sprite SetSprite()
     {
         if (facingRight)
         {
