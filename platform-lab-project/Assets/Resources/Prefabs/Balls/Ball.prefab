@@ -95,8 +95,10 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   spriteRenderer: {fileID: 0}
   facingRight: 0
+  grounded: 0
   canInteract: 1
   isPlayer: 0
+  maxSpeed: 250
 --- !u!212 &212553512104311342
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -131,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: -1746308369
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec4e91a911a966342b0d0af6d2308198, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d17067b936e253438f5fe078ead82cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

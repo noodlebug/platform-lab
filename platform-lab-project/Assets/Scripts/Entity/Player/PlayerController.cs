@@ -6,15 +6,10 @@ using UnityEngine;
 
 public class PlayerController : PlayerEntity
 {
-
+    [Header("Player")]
     public float jumpForce;
     public float speed;
-
-    // movement
-    private float jumpPressedTime = 0;
-    private bool jumpPressed = false;
-
-    private float hAxis;
+    
 
     [Header("Ball")]
     public BallController ballPrefab;
@@ -22,13 +17,16 @@ public class PlayerController : PlayerEntity
 
     [Header("Small balls")]
     public SmallBall smallBallPrefab;
-
     private List<SmallBall> smallBalls = new List<SmallBall>();
 
     [Header("Minions")]
     public Minion minionPrefab;
-
     private List<Minion> minions = new List<Minion>();
+
+    // movement
+    private float jumpPressedTime = 0;
+    private bool jumpPressed = false;
+    private float hAxis;
 
     protected override void Awake()
     {
@@ -36,7 +34,8 @@ public class PlayerController : PlayerEntity
     }
 
     //  set player velocity from other scripts
-    public void SetVelocity(Vector2 velocity)
+    public void 
+    SetVelocity(Vector2 velocity)
     {
         rigidBody.velocity = velocity;
     }
@@ -49,6 +48,10 @@ public class PlayerController : PlayerEntity
 
     protected override void Update()
     {
+        grounded = Grounded();
+
+        game.debug.Log("grouded", grounded.ToString());
+
         base.Update();
 
         Move();
@@ -58,9 +61,6 @@ public class PlayerController : PlayerEntity
 
     private void FixedUpdate()
     {
-        //physics.Physics();
-        grounded = Grounded();
-        game.debug.Log("Player grounded", grounded.ToString()); 
     }
 
     #region Movement
@@ -73,13 +73,13 @@ public class PlayerController : PlayerEntity
             jumpPressedTime = Time.time;
             jumpPressed = true;
         }
-        //stop jumping
+        //stop jumping (half y velocity if moving up)
         else if (Input.GetButtonUp("Jump") && rigidBody.velocity.y > 0)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y / 2);
         }
 
-        //  enable player to press jump just before landing
+        //  enable player to press jump a moment before landing
         if (jumpPressed)
         {   
             //  jump was pressed within 0.25f seconds of current time
@@ -102,6 +102,22 @@ public class PlayerController : PlayerEntity
         // horizontal input
         hAxis = Input.GetAxisRaw("Horizontal");
         
+        float xForce = 0;
+
+        // move force
+        if (hAxis != 0 && (Input.GetButtonDown("Horizontal") || (rigidBody.velocity.x != 0 || grounded)))
+        {
+            xForce = (rigidBody.mass * (speed - (rigidBody.velocity.x * hAxis))) * hAxis;
+        }
+        // stop force
+        else if (rigidBody.velocity.x != 0)
+        {
+            xForce = (rigidBody.mass * rigidBody.velocity.x) * -1;
+        }
+
+        // add horizontal force
+        rigidBody.AddForce(new Vector2(xForce, 0), mode: ForceMode2D.Impulse);
+
         // if moving and facing the wrong direction
         if (hAxis != 0 && facingRight != (hAxis > 0))
         {
@@ -110,20 +126,6 @@ public class PlayerController : PlayerEntity
             //  change sprite
             spriteRenderer.sprite = SetSprite();
         }
-
-        float xForce = 0;
-
-        if (hAxis != 0)
-        {
-            xForce = (rigidBody.mass * (speed - (rigidBody.velocity.x * hAxis))) * hAxis;
-        }
-        // both A and D are pressed
-        else if (rigidBody.velocity.x != 0)
-        {
-            xForce = (rigidBody.mass * rigidBody.velocity.x) * -1;
-        }
-
-        rigidBody.AddForce(new Vector2(xForce, 0), mode: ForceMode2D.Impulse);
     }
 
     #endregion
@@ -143,7 +145,7 @@ public class PlayerController : PlayerEntity
             }
         } 
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             BecomeBall();
         }

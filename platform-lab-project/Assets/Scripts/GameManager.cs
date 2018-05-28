@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
 	public Camera cam;
 	public UIManager ui;
+	public GameObject dedText;
 	
 	public float cameraFollowRange = 2;
     
@@ -30,6 +31,12 @@ public class GameManager : MonoBehaviour
 		CameraFollow(cameraFollowRange);
 		
     }
+
+	public void KillPlayer()
+	{
+		dedText.SetActive(true);
+		Time.timeScale = 0;
+	}
 	
 	//  camera follow
 	private void CameraFollow(float maxDistance)
