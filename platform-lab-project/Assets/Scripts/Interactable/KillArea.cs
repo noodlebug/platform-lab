@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KillArea : MonoBehaviour
 {
-
+	//	if player enters area, kill player
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Player")

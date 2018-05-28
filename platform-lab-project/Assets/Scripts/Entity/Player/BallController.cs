@@ -44,10 +44,6 @@ public class BallController : PlayerEntity
 		// horizontal axis is reversed so the ball rolls in the correct direction
 		float hAxis = -Input.GetAxisRaw("Horizontal");
 
-		game.debug.Log("horizontal axis", hAxis.ToString());
-		game.debug.Log("angular sign", Mathf.Sign(rigidBody.angularVelocity).ToString());
-		game.debug.Log("angular velocity", Mathf.Round(rigidBody.angularVelocity).ToString());
-
 		if (hAxis != 0)
 		{
 			//	above max speed and not trying to reverse

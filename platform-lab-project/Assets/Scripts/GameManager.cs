@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
 	public void KillPlayer()
 	{
+		//	pause game and display game over text
 		dedText.SetActive(true);
 		Time.timeScale = 0;
 	}

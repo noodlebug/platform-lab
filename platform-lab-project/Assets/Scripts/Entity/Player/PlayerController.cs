@@ -9,7 +9,7 @@ public class PlayerController : PlayerEntity
     [Header("Player")]
     public float jumpForce;
     public float speed;
-    
+
 
     [Header("Ball")]
     public BallController ballPrefab;
@@ -34,8 +34,7 @@ public class PlayerController : PlayerEntity
     }
 
     //  set player velocity from other scripts
-    public void 
-    SetVelocity(Vector2 velocity)
+    public void SetVelocity(Vector2 velocity)
     {
         rigidBody.velocity = velocity;
     }
