@@ -10,6 +10,7 @@ public class DebugThings
     private Transform panel;
     private Text text;
     public Dictionary<string, string> logs = new Dictionary<string, string>();
+    public Dictionary<string, Vector2[]> lines = new Dictionary<string, Vector2[]>();
 
     //  constructor
     public DebugThings(Transform _panel, Text _text)
@@ -32,8 +33,14 @@ public class DebugThings
         logs[key] = value;
     }
 
+    //  add vectors for gizmo lines
+    public void Line(string key, Vector2 start, Vector2 end)
+    {
+        lines[key] = new Vector2[2] { start, end };
+    }
+
     //  print dict of strings as one string in UI Text component
-    public void RefreshStrings()
+    public void Refresh()
     {
         text.text = "";
         foreach (KeyValuePair<string, string> kvp in logs)
@@ -41,4 +48,6 @@ public class DebugThings
             text.text += kvp.Key + ":\t" + kvp.Value + "\n";
         }
     }
+
+    
 }

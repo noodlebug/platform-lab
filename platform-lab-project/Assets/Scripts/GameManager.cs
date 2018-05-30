@@ -27,9 +27,25 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //  push Update() to non Monobehaviour class DebugThings
-        debug.RefreshStrings();
+        debug.Refresh();
 		CameraFollow(cameraFollowRange);
-		
+    }
+
+	// draw gizmos
+    private void OnDrawGizmos()
+    {
+		if (debug.lines.Count == 0)
+		{
+			return;
+		}
+
+        Gizmos.color = Color.yellow;
+
+        // draw lines        
+        foreach (KeyValuePair<string, Vector2[]> kvp in debug.lines)
+        {
+            Gizmos.DrawLine(kvp.Value[0], kvp.Value[1]);
+        }
     }
 
 	public void KillPlayer()
