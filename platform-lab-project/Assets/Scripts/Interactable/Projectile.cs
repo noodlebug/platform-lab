@@ -6,11 +6,25 @@ public class Projectile : MonoBehaviour
 {
 	public GameManager game;
 	public float speed;
+	public float expireTime;
+
+	private float timer;
+
+	private void Awake()
+	{
+		timer = Time.fixedTime;
+	}
 
 	private void Update ()
 	{
 		// move projectile
 		transform.Translate(Vector2.up * speed);
+
+		// remove after expireTime in seconds
+		if ((Time.fixedTime - timer) >= expireTime)
+		{
+			Remove();
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collider)
@@ -27,7 +41,7 @@ public class Projectile : MonoBehaviour
 			default:
 				Remove();
 				break;
-        } 
+        }
 	}
 
 	private void Ricochet()

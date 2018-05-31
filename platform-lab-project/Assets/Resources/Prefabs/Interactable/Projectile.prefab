@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4229501087976952}
-  - component: {fileID: 212511909428230078}
   - component: {fileID: 114813024487076054}
+  - component: {fileID: 212511909428230078}
   - component: {fileID: 61749603878345108}
   - component: {fileID: 50548088912310388}
   m_Layer: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 0}
   speed: 0.1
+  expireTime: 5
 --- !u!212 &212511909428230078
 SpriteRenderer:
   m_ObjectHideFlags: 1
