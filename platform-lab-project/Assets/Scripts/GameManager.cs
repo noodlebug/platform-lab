@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public PlayerController player;
+	public BallController ball;
+	public PlayerEntity activePlayerEntity;
+
 	public Camera cam;
 	public UIManager ui;
 	public GameObject dedText;
@@ -17,11 +20,13 @@ public class GameManager : MonoBehaviour
 	//  debug
     public DebugThings debug;
     public Transform debugPanel;
+	public bool gizmosOn = false;
 
     private void Awake()
     {
 		ui.game = this;
         debug = new DebugThings(debugPanel, debugPanel.GetComponentInChildren<Text>());
+		activePlayerEntity = player;
     }
 
     private void Update()
@@ -34,6 +39,10 @@ public class GameManager : MonoBehaviour
 	// draw gizmos
     private void OnDrawGizmos()
     {
+		if (!gizmosOn)
+		{
+			return;
+		}
 		if (debug.lines.Count == 0)
 		{
 			return;
@@ -48,6 +57,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+	public void ChangeEntity()
+	{
+		if (activePlayerEntity == player)
+		{
+			activePlayerEntity = ball;
+			ball.spriteRenderer.color = Color.green;
+			player.spriteRenderer.color = Color.white;
+		}
+		else
+		{
+			activePlayerEntity = player;
+			ball.spriteRenderer.color = Color.white;
+			player.spriteRenderer.color = Color.green;
+		}
+	}
+
 	public void KillPlayer()
 	{
 		//	pause game and display game over text
@@ -59,8 +84,8 @@ public class GameManager : MonoBehaviour
 	private void CameraFollow(float maxDistance)
 	{
 		//	get player distance from center
-		float x = player.transform.position.x - cam.transform.position.x;
-		float y = player.transform.position.y - cam.transform.position.y;
+		float x = activePlayerEntity.transform.position.x - cam.transform.position.x;
+		float y = activePlayerEntity.transform.position.y - cam.transform.position.y;
 
 		Vector2 translation = new Vector2();
 

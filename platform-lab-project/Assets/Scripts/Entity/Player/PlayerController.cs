@@ -27,6 +27,7 @@ public class PlayerController : PlayerEntity
     private float jumpPressedTime = 0;
     private bool jumpPressed = false;
     private float hAxis;
+    private bool changedThisFrame;
 
     protected override void Awake()
     {
@@ -46,16 +47,22 @@ public class PlayerController : PlayerEntity
     }
 
     protected override void Update()
-    {
+    { 
         grounded = Grounded();
 
         game.debug.Log("grouded", grounded.ToString());
 
         base.Update();
 
-        Move();
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            game.ChangeEntity();
+        }
 
-        ToyInput();
+        if (game.activePlayerEntity == this)
+        {
+            Move();
+        }
     }
 
     private void FixedUpdate()
@@ -91,7 +98,7 @@ public class PlayerController : PlayerEntity
                     jumpPressed = false;
                 }
             }
-            //  2.5 seconds elapsed, jump no longer pressed
+            //  .25 seconds elapsed, jump no longer pressed
             else
             {
                 jumpPressed = false;
@@ -100,11 +107,10 @@ public class PlayerController : PlayerEntity
 
         // horizontal input
         hAxis = Input.GetAxisRaw("Horizontal");
-        
         float xForce = 0;
 
         // move force
-        if (hAxis != 0 && (Input.GetButtonDown("Horizontal") || (rigidBody.velocity.x != 0 || grounded)))
+        if (hAxis != 0 && (Input.GetButton("Horizontal") || (rigidBody.velocity.x != 0 || grounded)))
         {
             xForce = (rigidBody.mass * (speed - (rigidBody.velocity.x * hAxis))) * hAxis;
         }
@@ -132,49 +138,6 @@ public class PlayerController : PlayerEntity
     //  //
     #region Toys
             //  //
-
-    private void ToyInput()
-    {
-        //  command minions to move
-        if (Input.GetButtonDown("Fire1"))
-        {
-            foreach (Minion minion in minions)
-            {
-                minion.MoveToPoint(CursorPosition());
-            }
-        } 
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            BecomeBall();
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            SpawnBalls();
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            //SpawnMinions();
-        }
-    } 
-
-    //  turn player into a ball
-    private void BecomeBall()
-    {
-        //  set ball position to player position
-        ball = Instantiate(ballPrefab);
-        ball.transform.position = transform.position;
-
-		//	player velocity must be taken from ClassicPhysics not RigidBody2D        
-        ball.rigidBody.velocity = rigidBody.velocity;
-
-        //  attach player to ball
-        transform.parent = ball.transform;
-
-        //  activate ball deactivate player
-        ball.gameObject.SetActive(true);
-        gameObject.SetActive(false);
-    }
 
     //  spawn some small balls
     private void SpawnBalls()

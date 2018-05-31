@@ -12,31 +12,12 @@ public class BallController : PlayerEntity
 	}
 	protected override void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.LeftControl))
-		{
-			BecomePlayer();
-		}
-		
-		Move();
+		if (game.activePlayerEntity == this)
+        {
+            Move();
+        }
 
 		base.Update();
-	}
-
-	//	become normal player entity
-	public void BecomePlayer()
-	{
-		//	correct ball rotation as player is a child of the ball transform
-		transform.rotation = new Quaternion();
-
-		//	set player velocity to ball velocity
-		game.player.SetVelocity(rigidBody.velocity);
-
-		//	activate player
-        game.player.gameObject.SetActive(true);
-
-		//	detatch player from ball and destroy ball
-		game.player.transform.parent = null;
-        Destroy(this.gameObject);
 	}
 
 	private void Move()
