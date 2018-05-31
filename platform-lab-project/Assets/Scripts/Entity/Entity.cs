@@ -17,6 +17,7 @@ public class Entity : MonoBehaviour
 	[HideInInspector]public GameManager game;    
     [HideInInspector]public Rigidbody2D rigidBody;
     [HideInInspector]public SpriteRenderer spriteRenderer;
+    [HideInInspector]public Collider2D collider_;          
     [HideInInspector]public bool facingRight;  
 
     //  grounded check
@@ -34,7 +35,7 @@ public class Entity : MonoBehaviour
 		game = GameObject.FindObjectOfType<GameManager>();
         rigidBody= GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //physics = new ClassicPhysics(this.gameObject, physicsModifiers);
+        collider_ = GetComponent<Collider2D>();
         
         //	do not detect trigger colliders, use player object collision settings
 	    contactFilter.useTriggers = false;

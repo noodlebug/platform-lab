@@ -9,6 +9,7 @@ public class PlayerController : PlayerEntity
     [Header("Player")]
     public float jumpForce;
     public float speed;
+    public List<string> pushableTags;
 
 
     [Header("Ball")]
@@ -49,16 +50,17 @@ public class PlayerController : PlayerEntity
     protected override void Update()
     { 
         grounded = Grounded();
-
         game.debug.Log("grouded", grounded.ToString());
 
         base.Update();
 
+        //  toggle between player and ball
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             game.ChangeEntity();
         }
 
+        //  move if active
         if (game.activePlayerEntity == this)
         {
             Move();
@@ -108,9 +110,27 @@ public class PlayerController : PlayerEntity
         // horizontal input
         hAxis = Input.GetAxisRaw("Horizontal");
         float xForce = 0;
+        
+        //  cast collider to count horizontal collisions
+        RaycastHit2D[] horizontalHits = new RaycastHit2D[16];
+        int hitCount = collider_.Cast(new Vector2(hAxis, 0), horizontalHits, 0.01f);
+        horizontalHits = new RaycastHit2D[hitCount];
 
-        // move force
-        if (hAxis != 0 && (Input.GetButton("Horizontal") || (rigidBody.velocity.x != 0 || grounded)))
+        if (hitCount > 0)
+        {
+            //  disregard objects with tags in pushable list
+            for (int i = 1; i <= hitCount; i++)
+            {
+                if (pushableTags.Contains(horizontalHits[i].transform.tag))
+                {
+                    hitCount = hitCount - 1;
+                    break;
+                }
+            }
+        }
+
+        // add move force if moving and not hitting a wall
+        if (hAxis != 0 && hitCount == 0)
         {
             xForce = (rigidBody.mass * (speed - (rigidBody.velocity.x * hAxis))) * hAxis;
         }
