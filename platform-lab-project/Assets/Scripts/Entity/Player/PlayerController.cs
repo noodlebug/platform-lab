@@ -113,13 +113,13 @@ public class PlayerController : PlayerEntity
         
         //  cast collider to count horizontal collisions
         RaycastHit2D[] horizontalHits = new RaycastHit2D[16];
-        int hitCount = collider_.Cast(new Vector2(hAxis, 0), horizontalHits, 0.01f);
-        horizontalHits = new RaycastHit2D[hitCount];
+        int hitCount = collider_.Cast(new Vector2(hAxis, 0), horizontalHits, 0.02f);
 
+        game.debug.Log("hits", hitCount.ToString());
         if (hitCount > 0)
         {
-            //  disregard objects with tags in pushable list
-            for (int i = 1; i <= hitCount; i++)
+            //  disregard objects with tags in pushable list            
+            for (int i = 0; i < hitCount; i++)
             {
                 if (pushableTags.Contains(horizontalHits[i].transform.tag))
                 {
